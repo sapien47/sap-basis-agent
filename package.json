@@ -8,7 +8,8 @@
     "start": "node --env-file=.env src/server.js",
     "test": "node --env-file=.env scripts/smoke-test.js",
     "fetch-wsdl": "node --env-file=.env scripts/fetch-wsdl.mjs",
-    "reset-demo": "node scripts/reset-demo.mjs"
+    "reset-demo": "node scripts/reset-demo.mjs",
+    "screenshots": "node scripts/screenshot-workflow.mjs"
   },
   "keywords": ["sap", "basis", "bapi", "mcp", "agent"],
   "license": "MIT",
