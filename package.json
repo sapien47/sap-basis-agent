@@ -1,0 +1,19 @@
+{
+  "name": "sap-basis-agent",
+  "version": "0.1.0",
+  "description": "MCP server that lets an AI agent do routine SAP Basis user administration through standard BAPIs (SOAP over HTTP, no SDK)",
+  "main": "src/server.js",
+  "type": "module",
+  "scripts": {
+    "start": "node --env-file=.env src/server.js",
+    "test": "node --env-file=.env scripts/smoke-test.js",
+    "fetch-wsdl": "node --env-file=.env scripts/fetch-wsdl.mjs",
+    "reset-demo": "node scripts/reset-demo.mjs"
+  },
+  "keywords": ["sap", "basis", "bapi", "mcp", "agent"],
+  "license": "MIT",
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.32.1",
+    "zod": "^4.6.5"
+  }
+}

@@ -1,0 +1,3311 @@
+{
+ "description": "Sample SoD matrix built from SAP_BR_* business roles of a demo S/4HANA system. Apps are mapped to functions by title keywords; demo rule set, not SAP GRC.",
+ "generated": "2026-10-09",
+ "functions": {
+  "SUP_MASTER": {
+   "description": "Maintain supplier / business partner master data",
+   "apps": [
+    "F7204"
+   ]
+  },
+  "PO_CREATE": {
+   "description": "Create or change purchase orders",
+   "apps": [
+    "F0842A",
+    "F3292",
+    "F3486",
+    "F4104",
+    "U0016"
+   ]
+  },
+  "GR_POST": {
+   "description": "Post goods receipts",
+   "apps": [
+    "F0843",
+    "F2502",
+    "F3244",
+    "F4974"
+   ]
+  },
+  "SUP_INVOICE": {
+   "description": "Enter supplier invoices",
+   "apps": [
+    "F0859",
+    "F2452"
+   ]
+  },
+  "PAY_RUN": {
+   "description": "Run or post outgoing payments",
+   "apps": [
+    "F0770",
+    "F1612"
+   ]
+  },
+  "BANK_MASTER": {
+   "description": "Maintain house bank / bank accounts",
+   "apps": [
+    "F1366A"
+   ]
+  },
+  "CUST_MASTER": {
+   "description": "Maintain customer master data",
+   "apps": []
+  },
+  "BILLING": {
+   "description": "Create billing documents or credit memos",
+   "apps": [
+    "F1989",
+    "F1989A"
+   ]
+  },
+  "INCOMING_PAY": {
+   "description": "Post or clear incoming payments",
+   "apps": [
+    "F0773",
+    "F1345"
+   ]
+  },
+  "GL_POST": {
+   "description": "Post general ledger journal entries",
+   "apps": [
+    "F0718",
+    "F2548"
+   ]
+  },
+  "PERIOD_CTRL": {
+   "description": "Open and close posting periods",
+   "apps": [
+    "F2293",
+    "F4684"
+   ]
+  },
+  "USER_ADMIN": {
+   "description": "Maintain users",
+   "apps": []
+  },
+  "ROLE_ADMIN": {
+   "description": "Maintain roles and authorizations",
+   "apps": []
+  }
+ },
+ "appTitles": {
+  "F0718": "Post General Journal Entries",
+  "F0770": "Manage Automatic Payments",
+  "F0773": "Clear Incoming Payments",
+  "F0842A": "Manage Purchase Orders",
+  "F0843": "Post Goods Receipt for Pur.Doc.",
+  "F0859": "Create Supplier Invoice",
+  "F1345": "Post Incoming Payments",
+  "F1366A": "Manage Bank Accounts",
+  "F1612": "Post Outgoing Payments",
+  "F1989": "Manage Credit Memo Requests",
+  "F1989A": "Manage Credit Memo Requests V2",
+  "F2293": "Manage Posting Periods",
+  "F2452": "Upload Supplier Invoices",
+  "F2502": "Post Goods Receipt for Inbound Deliv",
+  "F2548": "Upload General Journal Entries",
+  "F3244": "Post Goods Receipt without Reference",
+  "F3292": "Manage Purchase Orders Centrally",
+  "F3486": "Create Purchase Order Centrally",
+  "F4104": "Create Purchase Orders from Quotat.",
+  "F4684": "Manage Posting Periods - Cost Accoun",
+  "F4974": "Post Goods Receipt",
+  "F7204": "Manage Business Partners",
+  "U0016": "Manage Purchase Order"
+ },
+ "risks": [
+  {
+   "id": "R01",
+   "functions": [
+    "SUP_MASTER",
+    "PAY_RUN"
+   ],
+   "level": "High",
+   "risk": "Create a fake supplier and pay it"
+  },
+  {
+   "id": "R02",
+   "functions": [
+    "SUP_MASTER",
+    "SUP_INVOICE"
+   ],
+   "level": "High",
+   "risk": "Create a fake supplier and enter invoices for it"
+  },
+  {
+   "id": "R03",
+   "functions": [
+    "PO_CREATE",
+    "SUP_INVOICE"
+   ],
+   "level": "High",
+   "risk": "Order and invoice your own purchase"
+  },
+  {
+   "id": "R04",
+   "functions": [
+    "PO_CREATE",
+    "GR_POST"
+   ],
+   "level": "Medium",
+   "risk": "Confirm delivery of your own order"
+  },
+  {
+   "id": "R05",
+   "functions": [
+    "SUP_INVOICE",
+    "PAY_RUN"
+   ],
+   "level": "Medium",
+   "risk": "Enter an invoice and pay it without a second person"
+  },
+  {
+   "id": "R06",
+   "functions": [
+    "BANK_MASTER",
+    "PAY_RUN"
+   ],
+   "level": "High",
+   "risk": "Change bank accounts and run payments to them"
+  },
+  {
+   "id": "R07",
+   "functions": [
+    "BILLING",
+    "INCOMING_PAY"
+   ],
+   "level": "High",
+   "risk": "Issue a credit memo to hide missing customer payments"
+  },
+  {
+   "id": "R08",
+   "functions": [
+    "CUST_MASTER",
+    "INCOMING_PAY"
+   ],
+   "level": "Medium",
+   "risk": "Change a customer and manipulate its payments"
+  },
+  {
+   "id": "R09",
+   "functions": [
+    "GL_POST",
+    "PERIOD_CTRL"
+   ],
+   "level": "Medium",
+   "risk": "Post entries into periods you reopened yourself"
+  },
+  {
+   "id": "R10",
+   "functions": [
+    "USER_ADMIN",
+    "ROLE_ADMIN"
+   ],
+   "level": "Critical",
+   "risk": "Give yourself any access"
+  }
+ ],
+ "roles": {
+  "SAP_BR_AA_ACCOUNTANT": {
+   "text": "Asset Accountant",
+   "hasContent": true,
+   "functions": {}
+  },
+  "SAP_BR_AA_ACCOUNTANT_BG": {
+   "text": "Asset Accountant for Bulgaria",
+   "hasContent": false,
+   "functions": {}
+  },
+  "SAP_BR_AA_ACCOUNTANT_IL": {
+   "text": "Asset Accountant for Israel",
+   "hasContent": false,
+   "functions": {}
+  },
+  "SAP_BR_AA_ACCOUNTANT_IT": {
+   "text": "Asset Accountant for Italy",
+   "hasContent": false,
+   "functions": {}
+  },
+  "SAP_BR_AA_ACCOUNTANT_JP": {
+   "text": "Asset Accountant for Japan",
+   "hasContent": false,
+   "functions": {}
+  },
+  "SAP_BR_AA_ACCOUNTANT_KR": {
+   "text": "Asset Accountant for South Korea",
+   "hasContent": false,
+   "functions": {}
+  },
+  "SAP_BR_AA_ACCOUNTANT_KZ": {
+   "text": "Asset Accountant for Kazakhstan",
+   "hasContent": false,
+   "functions": {}
+  },
+  "SAP_BR_AA_ACCOUNTANT_LU": {
+   "text": "Asset Accountant for Luxembourg",
+   "hasContent": false,
+   "functions": {}
+  },
+  "SAP_BR_AA_ACCOUNTANT_PL": {
+   "text": "Asset Accountant for Poland",
+   "hasContent": false,
+   "functions": {}
+  },
+  "SAP_BR_AA_ACCOUNTANT_PT": {
+   "text": "Asset Accountant for Portugal",
+   "hasContent": false,
+   "functions": {}
+  },
+  "SAP_BR_AA_ACCOUNTANT_RO": {
+   "text": "Asset Accountant for Romania",
+   "hasContent": false,
+   "functions": {}
+  },
+  "SAP_BR_AA_ACCOUNTANT_RS": {
+   "text": "Asset Accountant for Serbia",
+   "hasContent": false,
+   "functions": {}
+  },
+  "SAP_BR_AA_ACCOUNTANT_RU": {
+   "text": "Asset Accountant for Russian Federation",
+   "hasContent": false,
+   "functions": {}
+  },
+  "SAP_BR_AA_ACCOUNTANT_SG": {
+   "text": "Asset Accountant for Singapore",
+   "hasContent": false,
+   "functions": {}
+  },
+  "SAP_BR_AA_ACCOUNTANT_SK": {
+   "text": "Asset Accountant for Slovakia",
+   "hasContent": false,
+   "functions": {}
+  },
+  "SAP_BR_AA_ACCOUNTANT_TH": {
+   "text": "Asset Accountant for Thailand",
+   "hasContent": false,
+   "functions": {}
+  },
+  "SAP_BR_AA_ACCOUNTANT_UA": {
+   "text": "Asset Accountant for Ukraine",
+   "hasContent": false,
+   "functions": {}
+  },
+  "SAP_BR_AA_ACCOUNTANT_US": {
+   "text": "Asset Accountant for USA",
+   "hasContent": true,
+   "functions": {}
+  },
+  "SAP_BR_ACADEMIC_ADVISOR": {
+   "text": "Academic Advisor",
+   "hasContent": false,
+   "functions": {}
+  },
+  "SAP_BR_ACS_AUDITOR_GR": {
+   "text": "Audit Specialist for Greece",
+   "hasContent": false,
+   "functions": {}
+  },
+  "SAP_BR_ACS_AUDITOR_HR": {
+   "text": "Audit Specialist for Croatia",
+   "hasContent": false,
+   "functions": {}
+  },
+  "SAP_BR_ACS_AUDITOR_IL": {
+   "text": "Audit Specialist for Israel",
+   "hasContent": false,
+   "functions": {}
+  },
+  "SAP_BR_ACS_AUDITOR_JP": {
+   "text": "Audit Specialist for Japan",
+   "hasContent": false,
+   "functions": {}
+  },
+  "SAP_BR_ADMINISTRATOR": {
+   "text": "Administrator",
+   "hasContent": true,
+   "functions": {}
+  },
+  "SAP_BR_ADMINISTRATOR_DANA": {
+   "text": "Administrator - Data Analysis",
+   "hasContent": true,
+   "functions": {}
+  },
+  "SAP_BR_ADMINISTRATOR_DATA_REPL": {
+   "text": "Administrator - Data Replication",
+   "hasContent": true,
+   "functions": {}
+  },
+  "SAP_BR_ADMINISTRATOR_GRP": {
+   "text": "Administrator - Group Reporting",
+   "hasContent": true,
+   "functions": {}
+  },
+  "SAP_BR_ADMINISTRATOR_HRINFO": {
+   "text": "Administrator - HR Info",
+   "hasContent": false,
+   "functions": {}
+  },
+  "SAP_BR_ADMINISTRATOR_LCM": {
+   "text": "Administrator - Enterprise Contract Management",
+   "hasContent": true,
+   "functions": {}
+  },
+  "SAP_BR_ADMINISTRATOR_LMD": {
+   "text": "Administrator - Direct Distribution",
+   "hasContent": false,
+   "functions": {}
+  },
+  "SAP_BR_ADMINISTRATOR_RCP_DEV": {
+   "text": "Administrator - Recipe Development",
+   "hasContent": false,
+   "functions": {}
+  },
+  "SAP_BR_ADMINISTRATOR_RFM": {
+   "text": "Administrator (Retail)",
+   "hasContent": false,
+   "functions": {}
+  },
+  "SAP_BR_ADMINISTRATOR_SLL": {
+   "text": "Administrator - International Trade",
+   "hasContent": true,
+   "functions": {}
+  },
+  "SAP_BR_ADMINISTRATOR_SRC": {
+   "text": "Administrator - Sourcing",
+   "hasContent": false,
+   "functions": {}
+  },
+  "SAP_BR_ADMIN_APR_FICA": {
+   "text": "Administrator - Accounts Payable and Receivable (FI-CA)",
+   "hasContent": true,
+   "functions": {}
+  },
+  "SAP_BR_ADMIN_APR_FICA_US": {
+   "text": "Administrator - Accounts Payable and Receivable (FI-CA) for USA",
+   "hasContent": false,
+   "functions": {}
+  },
+  "SAP_BR_ADMIN_CONCUR_INT": {
+   "text": "Administrator - Concur Integration",
+   "hasContent": false,
+   "functions": {}
+  },
+  "SAP_BR_ADMIN_JVA": {
+   "text": "Joint Venture Accountant - Special Ledger",
+   "hasContent": false,
+   "functions": {}
+  },
+  "SAP_BR_ADMIN_SUS_PFM": {
+   "text": "Administrator - Product Footprint Management",
+   "hasContent": false,
+   "functions": {}
+  },
+  "SAP_BR_ADV_RECEIVING_SPEC": {
+   "text": "Advanced Receiving Specialist",
+   "hasContent": false,
+   "functions": {}
+  },
+  "SAP_BR_ADV_RETURNS_SPECIALIST": {
+   "text": "Advanced Returns Specialist",
+   "hasContent": false,
+   "functions": {}
+  },
+  "SAP_BR_ADV_SHIPPING_SPECIALIST": {
+   "text": "Advanced Shipping Specialist",
+   "hasContent": false,
+   "functions": {}
+  },
+  "SAP_BR_ALLOCATOR_RETAIL": {
+   "text": "Allocator (Retail)",
+   "hasContent": false,
+   "functions": {}
+  },
+  "SAP_BR_ANALYTICS_SPECIALIST": {
+   "text": "Analytics Specialist",
+   "hasContent": true,
+   "functions": {}
+  },
+  "SAP_BR_ANALYTICS_SPECIALIST_IN": {
+   "text": "Analytics Specialist for India",
+   "hasContent": false,
+   "functions": {}
+  },
+  "SAP_BR_APR_ACCOUNTANT_FICA": {
+   "text": "Accounts Payable and Receivable Accountant (FI-CA)",
+   "hasContent": true,
+   "functions": {}
+  },
+  "SAP_BR_APR_MANAGER_FICA": {
+   "text": "Accounts Payable and Receivable Manager (FI-CA)",
+   "hasContent": true,
+   "functions": {}
+  },
+  "SAP_BR_AP_ACCOUNTANT": {
+   "text": "Accounts Payable Accountant",
+   "hasContent": true,
+   "functions": {
+    "INCOMING_PAY": [
+     "F1345"
+    ],
+    "PAY_RUN": [
+     "F0770",
+     "F1612"
+    ]
+   }
+  },
+  "SAP_BR_AP_ACCOUNTANT_AE": {
+   "text": "Accounts Payable Accountant for United Arab Emirates",
+   "hasContent": false,
+   "functions": {}
+  },
+  "SAP_BR_AP_ACCOUNTANT_AU": {
+   "text": "Accounts Payable Accountant for Australia",
+   "hasContent": false,
+   "functions": {}
+  },
+  "SAP_BR_AP_ACCOUNTANT_CN": {
+   "text": "Accounts Payable Accountant for China",
+   "hasContent": true,
+   "functions": {}
+  },
+  "SAP_BR_AP_ACCOUNTANT_CZ": {
+   "text": "Accounts Payable Accountant for Czech Republic",
+   "hasContent": false,
+   "functions": {}
+  },
+  "SAP_BR_AP_ACCOUNTANT_EG": {
+   "text": "Accounts Payable Accountant for Egypt",
+   "hasContent": false,
+   "functions": {}
+  },
+  "SAP_BR_AP_ACCOUNTANT_ES": {
+   "text": "Accounts Payable Accountant for Spain",
+   "hasContent": false,
+   "functions": {}
+  },
+  "SAP_BR_AP_ACCOUNTANT_FR": {
+   "text": "Accounts Payable Accountant for France",
+   "hasContent": false,
+   "functions": {}
+  },
+  "SAP_BR_AP_ACCOUNTANT_GB": {
+   "text": "Accounts Payable Accountant for United Kingdom",
+   "hasContent": false,
+   "functions": {}
+  },
+  "SAP_BR_AP_ACCOUNTANT_GR": {
+   "text": "Accounts Payable Accountant for Greece",
+   "hasContent": false,
+   "functions": {}
+  },
+  "SAP_BR_AP_ACCOUNTANT_IE": {
+   "text": "Accounts Payable Accountant for Ireland",
+   "hasContent": false,
+   "functions": {}
+  },
+  "SAP_BR_AP_ACCOUNTANT_IL": {
+   "text": "Accounts Payable Accountant for Israel",
+   "hasContent": false,
+   "functions": {}
+  },
+  "SAP_BR_AP_ACCOUNTANT_IN": {
+   "text": "Accounts Payable Accountant for India",
+   "hasContent": false,
+   "functions": {}
+  },
+  "SAP_BR_AP_ACCOUNTANT_IOG": {
+   "text": "Accounts Payable Accountant (IOG)",
+   "hasContent": false,
+   "functions": {}
+  },
+  "SAP_BR_AP_ACCOUNTANT_JP": {
+   "text": "Accounts Payable Accountant for Japan",
+   "hasContent": false,
+   "functions": {}
+  },
+  "SAP_BR_AP_ACCOUNTANT_KR": {
+   "text": "Accounts Payable Accountant for South Korea",
+   "hasContent": false,
+   "functions": {}
+  },
+  "SAP_BR_AP_ACCOUNTANT_KW": {
+   "text": "Accounts Payable Accountant for Kuwait",
+   "hasContent": false,
+   "functions": {}
+  },
+  "SAP_BR_AP_ACCOUNTANT_KZ": {
+   "text": "Accounts Payable Accountant for Kazakhstan",
+   "hasContent": false,
+   "functions": {}
+  },
+  "SAP_BR_AP_ACCOUNTANT_LT": {
+   "text": "Accounts Payable Accountant for Lithuania",
+   "hasContent": false,
+   "functions": {}
+  },
+  "SAP_BR_AP_ACCOUNTANT_NO": {
+   "text": "Accounts Payable Accountant for Norway",
+   "hasContent": false,
+   "functions": {}
+  },
+  "SAP_BR_AP_ACCOUNTANT_OM": {
+   "text": "Accounts Payable Accountant for Oman",
+   "hasContent": false,
+   "functions": {}
+  },
+  "SAP_BR_AP_ACCOUNTANT_PL": {
+   "text": "Accounts Payable Accountant for Poland",
+   "hasContent": false,
+   "functions": {}
+  },
+  "SAP_BR_AP_ACCOUNTANT_PROCMT_BR": {
+   "text": "Accounts Payable Accountant - Procurement for Brazil",
+   "hasContent": false,
+   "functions": {}
+  },
+  "SAP_BR_AP_ACCOUNTANT_PROCMT_CN": {
+   "text": "Accounts Payable Accountant - Procurement for China",
+   "hasContent": false,
+   "functions": {}
+  },
+  "SAP_BR_AP_ACCOUNTANT_PROCMT_NL": {
+   "text": "Accounts Payable Accountant - Procurement for Netherlands",
+   "hasContent": false,
+   "functions": {}
+  },
+  "SAP_BR_AP_ACCOUNTANT_PROCUREMT": {
+   "text": "Accounts Payable Accountant - Procurement",
+   "hasContent": true,
+   "functions": {
+    "SUP_INVOICE": [
+     "F0859",
+     "F2452"
+    ]
+   }
+  },
+  "SAP_BR_AP_ACCOUNTANT_QA": {
+   "text": "Accounts Payable Accountant for Qatar",
+   "hasContent": false,
+   "functions": {}
+  },
+  "SAP_BR_AP_ACCOUNTANT_RO": {
+   "text": "Accounts Payable Accountant for Romania",
+   "hasContent": false,
+   "functions": {}
+  },
+  "SAP_BR_AP_ACCOUNTANT_RS": {
+   "text": "Accounts Payable Accountant for Serbia",
+   "hasContent": false,
+   "functions": {}
+  },
+  "SAP_BR_AP_ACCOUNTANT_RU": {
+   "text": "Accounts Payable Accountant for Russian Federation",
+   "hasContent": false,
+   "functions": {}
+  },
+  "SAP_BR_AP_ACCOUNTANT_SA": {
+   "text": "Accounts Payable Accountant for Saudi Arabia",
+   "hasContent": false,
+   "functions": {}
+  },
+  "SAP_BR_AP_ACCOUNTANT_SI": {
+   "text": "Accounts Payable Accountant for Slovenia",
+   "hasContent": false,
+   "functions": {}
+  },
+  "SAP_BR_AP_ACCOUNTANT_SK": {
+   "text": "Accounts Payable Accountant for Slovakia",
+   "hasContent": false,
+   "functions": {}
+  },
+  "SAP_BR_AP_ACCOUNTANT_TW": {
+   "text": "Accounts Payable Accountant for Taiwan",
+   "hasContent": false,
+   "functions": {}
+  },
+  "SAP_BR_AP_ACCOUNTANT_UA": {
+   "text": "Accounts Payable Accountant for Ukraine",
+   "hasContent": false,
+   "functions": {}
+  },
+  "SAP_BR_AP_MANAGER": {
+   "text": "Accounts Payable Manager",
+   "hasContent": true,
+   "functions": {}
+  },
+  "SAP_BR_AP_MANAGER_AR": {
+   "text": "Accounts Payable Manager for Argentina",
+   "hasContent": false,
+   "functions": {}
+  },
+  "SAP_BR_AP_MANAGER_AU": {
+   "text": "Accounts Payable Manager for Australia",
+   "hasContent": false,
+   "functions": {}
+  },
+  "SAP_BR_AP_MANAGER_BE": {
+   "text": "Accounts Payable Manager for Belgium",
+   "hasContent": true,
+   "functions": {}
+  },
+  "SAP_BR_AP_MANAGER_BG": {
+   "text": "Accounts Payable Manager for Bulgaria",
+   "hasContent": false,
+   "functions": {}
+  },
+  "SAP_BR_AP_MANAGER_BZ": {
+   "text": "Accounts Payable Manager for Belize",
+   "hasContent": false,
+   "functions": {}
+  },
+  "SAP_BR_AP_MANAGER_CA": {
+   "text": "Accounts Payable Manager for Canada",
+   "hasContent": false,
+   "functions": {}
+  },
+  "SAP_BR_AP_MANAGER_CL": {
+   "text": "Accounts Payable Manager for Chile",
+   "hasContent": false,
+   "functions": {}
+  },
+  "SAP_BR_AP_MANAGER_CO": {
+   "text": "Accounts Payable Manager for Colombia",
+   "hasContent": false,
+   "functions": {}
+  },
+  "SAP_BR_AP_MANAGER_DE": {
+   "text": "Accounts Payable Manager for Germany",
+   "hasContent": true,
+   "functions": {}
+  },
+  "SAP_BR_AP_MANAGER_EG": {
+   "text": "Accounts Payable Manager for Egypt",
+   "hasContent": false,
+   "functions": {}
+  },
+  "SAP_BR_AP_MANAGER_ES": {
+   "text": "Accounts Payable Manager for Spain",
+   "hasContent": false,
+   "functions": {}
+  },
+  "SAP_BR_AP_MANAGER_FR": {
+   "text": "Accounts Payable Manager for France",
+   "hasContent": false,
+   "functions": {}
+  },
+  "SAP_BR_AP_MANAGER_GB": {
+   "text": "Accounts Payable Manager for United Kingdom",
+   "hasContent": false,
+   "functions": {}
+  },
+  "SAP_BR_AP_MANAGER_GR": {
+   "text": "Accounts Payable Manager for Greece",
+   "hasContent": false,
+   "functions": {}
+  },
+  "SAP_BR_AP_MANAGER_ID": {
+   "text": "Accounts Payable Manager for Indonesia",
+   "hasContent": false,
+   "functions": {}
+  },
+  "SAP_BR_AP_MANAGER_IE": {
+   "text": "Accounts Payable Manager for Ireland",
+   "hasContent": false,
+   "functions": {}
+  },
+  "SAP_BR_AP_MANAGER_IT": {
+   "text": "Accounts Payable Manager for Italy",
+   "hasContent": false,
+   "functions": {}
+  },
+  "SAP_BR_AP_MANAGER_JP": {
+   "text": "Accounts Payable Manager for Japan",
+   "hasContent": false,
+   "functions": {}
+  },
+  "SAP_BR_AP_MANAGER_KR": {
+   "text": "Accounts Payable Manager for South Korea",
+   "hasContent": false,
+   "functions": {}
+  },
+  "SAP_BR_AP_MANAGER_MX": {
+   "text": "Accounts Payable Manager for Mexico",
+   "hasContent": false,
+   "functions": {}
+  },
+  "SAP_BR_AP_MANAGER_MY": {
+   "text": "Accounts Payable Manager for Malaysia",
+   "hasContent": false,
+   "functions": {}
+  },
+  "SAP_BR_AP_MANAGER_PE": {
+   "text": "Accounts Payable Manager for Peru",
+   "hasContent": false,
+   "functions": {}
+  },
+  "SAP_BR_AP_MANAGER_PH": {
+   "text": "Accounts Payable Manager for Philippines",
+   "hasContent": false,
+   "functions": {}
+  },
+  "SAP_BR_AP_MANAGER_PL": {
+   "text": "Accounts Payable Manager for Poland",
+   "hasContent": false,
+   "functions": {}
+  },
+  "SAP_BR_AP_MANAGER_PT": {
+   "text": "Accounts Payable Manager for Portugal",
+   "hasContent": false,
+   "functions": {}
+  },
+  "SAP_BR_AP_MANAGER_QA": {
+   "text": "Accounts Payable Manager for Qatar",
+   "hasContent": false,
+   "functions": {}
+  },
+  "SAP_BR_AP_MANAGER_SA": {
+   "text": "Accounts Payable Manager for Saudi Arabia",
+   "hasContent": false,
+   "functions": {}
+  },
+  "SAP_BR_AP_MANAGER_SG": {
+   "text": "Accounts Payable Manager for Singapore",
+   "hasContent": false,
+   "functions": {}
+  },
+  "SAP_BR_AP_MANAGER_SK": {
+   "text": "Accounts Payable Manager for Slovakia",
+   "hasContent": false,
+   "functions": {}
+  },
+  "SAP_BR_AP_MANAGER_TH": {
+   "text": "Accounts Payable Manager for Thailand",
+   "hasContent": false,
+   "functions": {}
+  },
+  "SAP_BR_AP_MANAGER_UA": {
+   "text": "Accounts Payable Manager for Ukraine",
+   "hasContent": false,
+   "functions": {}
+  },
+  "SAP_BR_AP_MANAGER_US": {
+   "text": "Accounts Payable Manager for USA",
+   "hasContent": false,
+   "functions": {}
+  },
+  "SAP_BR_AP_MANAGER_VE": {
+   "text": "Accounts Payable Manager for Venezuela",
+   "hasContent": false,
+   "functions": {}
+  },
+  "SAP_BR_AP_MANAGER_ZA": {
+   "text": "Accounts Payable Manager for South Africa",
+   "hasContent": false,
+   "functions": {}
+  },
+  "SAP_BR_AP_OPER_IN": {
+   "text": "General Ledger Accountant for India",
+   "hasContent": false,
+   "functions": {}
+  },
+  "SAP_BR_AP_PER_ACT_ES": {
+   "text": "Accounts Payable Manager for Spain",
+   "hasContent": false,
+   "functions": {}
+  },
+  "SAP_BR_AP_PER_ACT_IE": {
+   "text": "Accounts Payable Manager for Ireland",
+   "hasContent": false,
+   "functions": {}
+  },
+  "SAP_BR_AR_ACCOUNTANT": {
+   "text": "Accounts Receivable Accountant",
+   "hasContent": true,
+   "functions": {
+    "INCOMING_PAY": [
+     "F0773",
+     "F1345"
+    ],
+    "PAY_RUN": [
+     "F0770",
+     "F1612"
+    ],
+    "SUP_INVOICE": [
+     "F0859"
+    ]
+   }
+  },
+  "SAP_BR_AR_ACCOUNTANT_AE": {
+   "text": "Accounts Receivable Accountant for United Arab Emirates",
+   "hasContent": false,
+   "functions": {}
+  },
+  "SAP_BR_AR_ACCOUNTANT_CN": {
+   "text": "Accounts Receivable Accountant for China",
+   "hasContent": true,
+   "functions": {}
+  },
+  "SAP_BR_AR_ACCOUNTANT_CZ": {
+   "text": "Accounts Receivable Accountant for Czech Republic",
+   "hasContent": false,
+   "functions": {}
+  },
+  "SAP_BR_AR_ACCOUNTANT_EG": {
+   "text": "Accounts Receivable Accountant for Egypt",
+   "hasContent": false,
+   "functions": {}
+  },
+  "SAP_BR_AR_ACCOUNTANT_ES": {
+   "text": "Accounts Receivable Accountant for Spain",
+   "hasContent": false,
+   "functions": {}
+  },
+  "SAP_BR_AR_ACCOUNTANT_FR": {
+   "text": "Accounts Receivable Accountant for France",
+   "hasContent": false,
+   "functions": {}
+  },
+  "SAP_BR_AR_ACCOUNTANT_GR": {
+   "text": "Accounts Receivable Accountant for Greece",
+   "hasContent": false,
+   "functions": {}
+  },
+  "SAP_BR_AR_ACCOUNTANT_HR": {
+   "text": "Accounts Receivable Accountant for Croatia",
+   "hasContent": false,
+   "functions": {}
+  },
+  "SAP_BR_AR_ACCOUNTANT_ID": {
+   "text": "Accounts Receivable Accountant for Indonesia",
+   "hasContent": true,
+   "functions": {}
+  },
+  "SAP_BR_AR_ACCOUNTANT_IL": {
+   "text": "Accounts Receivable Accountant for Israel",
+   "hasContent": false,
+   "functions": {}
+  },
+  "SAP_BR_AR_ACCOUNTANT_IN": {
+   "text": "Accounts Receivable Accountant for India",
+   "hasContent": false,
+   "functions": {}
+  },
+  "SAP_BR_AR_ACCOUNTANT_IT": {
+   "text": "Accounts Receivable Accountant for Italy",
+   "hasContent": false,
+   "functions": {}
+  },
+  "SAP_BR_AR_ACCOUNTANT_JP": {
+   "text": "Accounts Receivable Accountant for Japan",
+   "hasContent": false,
+   "functions": {}
+  },
+  "SAP_BR_AR_ACCOUNTANT_KR": {
+   "text": "Accounts Receivable Accountant for South Korea",
+   "hasContent": false,
+   "functions": {}
+  },
+  "SAP_BR_AR_ACCOUNTANT_KZ": {
+   "text": "Accounts Receivable Accountant for Kazakhstan",
+   "hasContent": false,
+   "functions": {}
+  },
+  "SAP_BR_AR_ACCOUNTANT_NO": {
+   "text": "Accounts Receivable Accountant for Norway",
+   "hasContent": false,
+   "functions": {}
+  },
+  "SAP_BR_AR_ACCOUNTANT_PH": {
+   "text": "Accounts Receivable Accountant for Philippines",
+   "hasContent": true,
+   "functions": {}
+  },
+  "SAP_BR_AR_ACCOUNTANT_PL": {
+   "text": "Accounts Receivable Accountant for Poland",
+   "hasContent": false,
+   "functions": {}
+  },
+  "SAP_BR_AR_ACCOUNTANT_PT": {
+   "text": "Accounts Receivable Accountant for Portugal",
+   "hasContent": false,
+   "functions": {}
+  },
+  "SAP_BR_AR_ACCOUNTANT_QA": {
+   "text": "Accounts Receivable Accountant for Qatar",
+   "hasContent": false,
+   "functions": {}
+  },
+  "SAP_BR_AR_ACCOUNTANT_RS": {
+   "text": "Accounts Receivable Accountant for Serbia",
+   "hasContent": false,
+   "functions": {}
+  },
+  "SAP_BR_AR_ACCOUNTANT_RU": {
+   "text": "Accounts Receivable Accountant for Russian Federation",
+   "hasContent": false,
+   "functions": {}
+  },
+  "SAP_BR_AR_ACCOUNTANT_SA": {
+   "text": "Accounts Receivable Accountant for Saudi Arabia",
+   "hasContent": false,
+   "functions": {}
+  },
+  "SAP_BR_AR_ACCOUNTANT_SG": {
+   "text": "Accounts Receivable Accountant for Singapore",
+   "hasContent": false,
+   "functions": {}
+  },
+  "SAP_BR_AR_ACCOUNTANT_SK": {
+   "text": "Accounts Receivable Accountant for Slovakia",
+   "hasContent": false,
+   "functions": {}
+  },
+  "SAP_BR_AR_ACCOUNTANT_TH": {
+   "text": "Accounts Receivable Accountant for Thailand",
+   "hasContent": false,
+   "functions": {}
+  },
+  "SAP_BR_AR_ACCOUNTANT_TR": {
+   "text": "Accounts Receivable Accountant for Turkey",
+   "hasContent": false,
+   "functions": {}
+  },
+  "SAP_BR_AR_ACCOUNTANT_TW": {
+   "text": "Accounts Receivable Accountant for Taiwan",
+   "hasContent": false,
+   "functions": {}
+  },
+  "SAP_BR_AR_ACCOUNTANT_UA": {
+   "text": "Accounts Receivable Accountant for Ukraine",
+   "hasContent": false,
+   "functions": {}
+  },
+  "SAP_BR_AR_MANAGER": {
+   "text": "Accounts Receivable Manager",
+   "hasContent": false,
+   "functions": {}
+  },
+  "SAP_BR_AR_MANAGER_TH": {
+   "text": "Accounts Receivable Manager for Thailand",
+   "hasContent": false,
+   "functions": {}
+  },
+  "SAP_BR_ASSET_MANAGEMENT_FE_BR": {
+   "text": "Asset Accountant - MCPSE (Utilities) for Brazil",
+   "hasContent": false,
+   "functions": {}
+  },
+  "SAP_BR_ASSTMT_SPCLST_RFM": {
+   "text": "Assortment Specialist - Retail",
+   "hasContent": false,
+   "functions": {}
+  },
+  "SAP_BR_BANK_INT_SPECIALIST": {
+   "text": "Business Integration Specialist - Bank Integration",
+   "hasContent": false,
+   "functions": {}
+  },
+  "SAP_BR_BATCH_MASTER_SPCLST": {
+   "text": "Master Data Specialist - Batch Data",
+   "hasContent": false,
+   "functions": {}
+  },
+  "SAP_BR_BEH": {
+   "text": "for BEH apps",
+   "hasContent": false,
+   "functions": {}
+  },
+  "SAP_BR_BEI_ADMIN": {
+   "text": "Administrator - Public Sector",
+   "hasContent": false,
+   "functions": {}
+  },
+  "SAP_BR_BEI_DEBT_MGR": {
+   "text": "Accounts Receivable Manager - Public Sector",
+   "hasContent": false,
+   "functions": {}
+  },
+  "SAP_BR_BILLING_CLERK": {
+   "text": "Billing Clerk",
+   "hasContent": false,
+   "functions": {}
+  },
+  "SAP_BR_BILLING_CLERK_CL": {
+   "text": "Billing Clerk for Chile",
+   "hasContent": false,
+   "functions": {}
+  },
+  "SAP_BR_BILLING_CLERK_CO": {
+   "text": "Billing Clerk for Colombia",
+   "hasContent": false,
+   "functions": {}
+  },
+  "SAP_BR_BILLING_CLERK_CZ": {
+   "text": "Billing Clerk for Czech Republic",
+   "hasContent": false,
+   "functions": {}
+  },
+  "SAP_BR_BILLING_CLERK_GR": {
+   "text": "Billing Clerk for Greece",
+   "hasContent": false,
+   "functions": {}
+  },
+  "SAP_BR_BILLING_CLERK_HR": {
+   "text": "Billing Clerk for Croatia",
+   "hasContent": false,
+   "functions": {}
+  },
+  "SAP_BR_BILLING_CLERK_HU": {
+   "text": "Billing Clerk for Hungary",
+   "hasContent": false,
+   "functions": {}
+  },
+  "SAP_BR_BILLING_CLERK_IL": {
+   "text": "Billing Clerk for Israel",
+   "hasContent": false,
+   "functions": {}
+  },
+  "SAP_BR_BILLING_CLERK_IN": {
+   "text": "Billing Clerk for India",
+   "hasContent": true,
+   "functions": {}
+  },
+  "SAP_BR_BILLING_CLERK_IOG": {
+   "text": "Billing Clerk (IOG)",
+   "hasContent": false,
+   "functions": {}
+  },
+  "SAP_BR_BILLING_CLERK_IT": {
+   "text": "Billing Clerk for Italy",
+   "hasContent": false,
+   "functions": {}
+  },
+  "SAP_BR_BILLING_CLERK_PE": {
+   "text": "Billing Clerk for Peru",
+   "hasContent": false,
+   "functions": {}
+  },
+  "SAP_BR_BILLING_CLERK_PH": {
+   "text": "Billing Clerk for Philippines",
+   "hasContent": false,
+   "functions": {}
+  },
+  "SAP_BR_BILLING_CLERK_PT": {
+   "text": "Billing Clerk for Portugal",
+   "hasContent": false,
+   "functions": {}
+  },
+  "SAP_BR_BILLING_CLERK_SI": {
+   "text": "Billing Clerk for Slovenia",
+   "hasContent": false,
+   "functions": {}
+  },
+  "SAP_BR_BILLING_CLERK_TR": {
+   "text": "Billing Clerk for Turkey",
+   "hasContent": false,
+   "functions": {}
+  },
+  "SAP_BR_BILLING_SPECIALIST_ISU": {
+   "text": "Billing Specialist (Utilities)",
+   "hasContent": false,
+   "functions": {}
+  },
+  "SAP_BR_BILLING_SPEC_FE_BR": {
+   "text": "Billing Specialist (Utilities) for Brazil",
+   "hasContent": false,
+   "functions": {}
+  },
+  "SAP_BR_BOM_ENGINEER": {
+   "text": "BOM Engineer",
+   "hasContent": false,
+   "functions": {}
+  },
+  "SAP_BR_BOM_ENG_CUST_ORDER": {
+   "text": "BOM Engineer - Customer Order",
+   "hasContent": false,
+   "functions": {}
+  },
+  "SAP_BR_BPC_EXPERT": {
+   "text": "Configuration Expert - Business Process Configuration",
+   "hasContent": true,
+   "functions": {}
+  },
+  "SAP_BR_BPC_EXPERT_MDG": {
+   "text": "Configuration Expert - Business Process Configuration",
+   "hasContent": false,
+   "functions": {}
+  },
+  "SAP_BR_BUDGET_RESPONSIBLE": {
+   "text": "Budget Responsible - Funds Management",
+   "hasContent": false,
+   "functions": {}
+  },
+  "SAP_BR_BUDGET_SPECIALIST": {
+   "text": "Budget Specialist - Funds Management",
+   "hasContent": false,
+   "functions": {}
+  },
+  "SAP_BR_BUPA_MASTER_SPECIALIST": {
+   "text": "Master Data Specialist - Business Partner Data",
+   "hasContent": true,
+   "functions": {
+    "SUP_MASTER": [
+     "F7204"
+    ]
+   }
+  },
+  "SAP_BR_BUPA_MASTER_STEWARD": {
+   "text": "Master Data Steward - Business Partner Data",
+   "hasContent": false,
+   "functions": {}
+  },
+  "SAP_BR_BUSINESS_ANALYST_GRP": {
+   "text": "Business Analyst - Group Reporting",
+   "hasContent": true,
+   "functions": {}
+  },
+  "SAP_BR_BUSINESS_ANALYST_IOG": {
+   "text": "Business Analyst (IOG)",
+   "hasContent": false,
+   "functions": {}
+  },
+  "SAP_BR_BUSINESS_ANALYST_PMM": {
+   "text": "Business Analyst",
+   "hasContent": false,
+   "functions": {}
+  },
+  "SAP_BR_BUSINESS_PROCESS_SPEC": {
+   "text": "Business Process Specialist",
+   "hasContent": false,
+   "functions": {}
+  },
+  "SAP_BR_BUSINESS_PROC_SPEC_ESCH": {
+   "text": "Business Process Specialist - Enterprise Search",
+   "hasContent": false,
+   "functions": {}
+  },
+  "SAP_BR_BUYER": {
+   "text": "Strategic Buyer",
+   "hasContent": true,
+   "functions": {}
+  },
+  "SAP_BR_CALIBRATION_TECHNICIAN": {
+   "text": "Calibration Technician",
+   "hasContent": false,
+   "functions": {}
+  },
+  "SAP_BR_CAP_PLANNER": {
+   "text": "Organizational Planner - Capabilities",
+   "hasContent": false,
+   "functions": {}
+  },
+  "SAP_BR_CASH_MANAGER": {
+   "text": "Cash Manager",
+   "hasContent": true,
+   "functions": {
+    "BANK_MASTER": [
+     "F1366A"
+    ]
+   }
+  },
+  "SAP_BR_CASH_MANAGER_CN": {
+   "text": "Cash Manager for China",
+   "hasContent": true,
+   "functions": {}
+  },
+  "SAP_BR_CASH_MANAGER_ID": {
+   "text": "Cash Manager for Indonesia",
+   "hasContent": true,
+   "functions": {}
+  },
+  "SAP_BR_CASH_MANAGER_JP": {
+   "text": "Cash Manager for Japan",
+   "hasContent": false,
+   "functions": {}
+  },
+  "SAP_BR_CASH_MANAGER_MY": {
+   "text": "Cash Manager for Malaysia",
+   "hasContent": true,
+   "functions": {}
+  },
+  "SAP_BR_CASH_MANAGER_PH": {
+   "text": "Cash Manager for Philippines",
+   "hasContent": true,
+   "functions": {}
+  },
+  "SAP_BR_CASH_MANAGER_TH": {
+   "text": "Cash Manager for Thailand",
+   "hasContent": true,
+   "functions": {}
+  },
+  "SAP_BR_CASH_SPECIALIST": {
+   "text": "Cash Management Specialist",
+   "hasContent": true,
+   "functions": {
+    "BANK_MASTER": [
+     "F1366A"
+    ]
+   }
+  },
+  "SAP_BR_CASH_SPECIALIST_CN": {
+   "text": "Cash Management Specialist for China",
+   "hasContent": true,
+   "functions": {}
+  },
+  "SAP_BR_CASH_SPECIALIST_GB": {
+   "text": "Cash Management Specialist for United Kingdom",
+   "hasContent": false,
+   "functions": {}
+  },
+  "SAP_BR_CASH_SPECIALIST_GR": {
+   "text": "Cash Management Specialist for Greece",
+   "hasContent": false,
+   "functions": {}
+  },
+  "SAP_BR_CASH_SPECIALIST_HU": {
+   "text": "Cash Management Specialist for Hungary",
+   "hasContent": false,
+   "functions": {}
+  },
+  "SAP_BR_CASH_SPECIALIST_IL": {
+   "text": "Cash Management Specialist for Israel",
+   "hasContent": false,
+   "functions": {}
+  },
+  "SAP_BR_CASH_SPECIALIST_JP": {
+   "text": "Cash Management Specialist for Japan",
+   "hasContent": false,
+   "functions": {}
+  },
+  "SAP_BR_CASH_SPECIALIST_PH": {
+   "text": "Cash Management Specialist for Philippines",
+   "hasContent": true,
+   "functions": {}
+  },
+  "SAP_BR_CASH_SPECIALIST_PL": {
+   "text": "Cash Management Specialist for Poland",
+   "hasContent": false,
+   "functions": {}
+  },
+  "SAP_BR_CASH_SPECIALIST_RO": {
+   "text": "Cash Management Specialist for Romania",
+   "hasContent": false,
+   "functions": {}
+  },
+  "SAP_BR_CASH_SPECIALIST_RS": {
+   "text": "Cash Management Specialist for Serbia",
+   "hasContent": false,
+   "functions": {}
+  },
+  "SAP_BR_CASH_SPECIALIST_SK": {
+   "text": "Cash Management Specialist for Slovakia",
+   "hasContent": false,
+   "functions": {}
+  },
+  "SAP_BR_CASH_SPECIALIST_US": {
+   "text": "Cash Management Specialist for USA",
+   "hasContent": false,
+   "functions": {}
+  },
+  "SAP_BR_CAT_MAN_RFM": {
+   "text": "Category Manager (Retail)",
+   "hasContent": false,
+   "functions": {}
+  },
+  "SAP_BR_CENTRAL_PURCHASER": {
+   "text": "Purchaser - Central Procurement",
+   "hasContent": true,
+   "functions": {
+    "PO_CREATE": [
+     "F0842A",
+     "F3292",
+     "F3486",
+     "F4104"
+    ]
+   }
+  },
+  "SAP_BR_CHG_MGMT_COORDINATOR": {
+   "text": "Change Management Coordinator",
+   "hasContent": false,
+   "functions": {}
+  },
+  "SAP_BR_CLAIMS_ANALYST_COMPL": {
+   "text": "Claims Analyst",
+   "hasContent": false,
+   "functions": {}
+  },
+  "SAP_BR_CMMDTY_MD_SPECIALIST": {
+   "text": "Master Data Specialist - Commodity Management",
+   "hasContent": false,
+   "functions": {}
+  },
+  "SAP_BR_CMMFDOF_TRADER": {
+   "text": "Trader - Commodity Derivative Orders",
+   "hasContent": false,
+   "functions": {}
+  },
+  "SAP_BR_CMMFSA_MD_MANAGER": {
+   "text": "Trader - Commodity Derivative Orders",
+   "hasContent": false,
+   "functions": {}
+  },
+  "SAP_BR_CMM_PRISK_TRADER": {
+   "text": "Trader - Commodity Derivative Orders",
+   "hasContent": false,
+   "functions": {}
+  },
+  "SAP_BR_CMM_RISK_HACC": {
+   "text": "Commodity Risk Manager - Hedge Accounting",
+   "hasContent": false,
+   "functions": {}
+  },
+  "SAP_BR_CMPL_MANAGER_REP_IOG": {
+   "text": "Compliance Manager - Reporting (IOG)",
+   "hasContent": false,
+   "functions": {}
+  },
+  "SAP_BR_CMS_ADMIN": {
+   "text": "Administrator - Collateral Management",
+   "hasContent": false,
+   "functions": {}
+  },
+  "SAP_BR_CMS_COL_AUDITOR": {
+   "text": "Internal Auditor - Collateral Management",
+   "hasContent": false,
+   "functions": {}
+  },
+  "SAP_BR_CMS_CREDIT_MANAGER": {
+   "text": "Credit Manager",
+   "hasContent": false,
+   "functions": {}
+  },
+  "SAP_BR_CMS_CREDIT_RISK_MNG": {
+   "text": "Credit Risk Manager",
+   "hasContent": false,
+   "functions": {}
+  },
+  "SAP_BR_CNF_XPRT_DAT_MIG_IOG": {
+   "text": "Configuration Expert - Data Migration (IOG)",
+   "hasContent": false,
+   "functions": {}
+  },
+  "SAP_BR_COLL_SPECIALIST_FICA": {
+   "text": "Collections Specialist (FI-CA)",
+   "hasContent": true,
+   "functions": {}
+  },
+  "SAP_BR_COMPL_ENG_FOOD_BEV": {
+   "text": "Compliance Engineer - Food and Beverage",
+   "hasContent": false,
+   "functions": {}
+  },
+  "SAP_BR_CONFIG_EXPERT_DATA_MIG": {
+   "text": "Configuration Expert - Data Migration",
+   "hasContent": false,
+   "functions": {}
+  },
+  "SAP_BR_CONF_EXPERT_BUS_NET_INT": {
+   "text": "Configuration Expert - Business Network Integration",
+   "hasContent": true,
+   "functions": {}
+  },
+  "SAP_BR_CONSLDTN_SPECIALIST": {
+   "text": "Consolidation Specialist",
+   "hasContent": true,
+   "functions": {}
+  },
+  "SAP_BR_CONTRACT_MANAGER_CCM": {
+   "text": "Contract Manager - Settlement Management",
+   "hasContent": true,
+   "functions": {}
+  },
+  "SAP_BR_CONTR_MGR_COMMSN": {
+   "text": "Contract Manager - Commissions",
+   "hasContent": true,
+   "functions": {}
+  },
+  "SAP_BR_CONTR_MGR_ROYALTIES": {
+   "text": "Contract Manager - Royalties",
+   "hasContent": true,
+   "functions": {}
+  },
+  "SAP_BR_CONTR_SPCLIST_CMMDTY": {
+   "text": "Contract Specialist - Commodity Management",
+   "hasContent": false,
+   "functions": {}
+  },
+  "SAP_BR_CRDT_CTRLR_PPA": {
+   "text": "Credit Controller - Prepayments",
+   "hasContent": false,
+   "functions": {}
+  },
+  "SAP_BR_CREDIT_CONTROLLER": {
+   "text": "Credit Controller",
+   "hasContent": false,
+   "functions": {}
+  },
+  "SAP_BR_CSR_TRM": {
+   "text": "Customer Service Representative - Tax and Revenue Management",
+   "hasContent": false,
+   "functions": {}
+  },
+  "SAP_BR_CUSTOMER_ANALYST_FE_BR": {
+   "text": "Customer Service Representative - Data Analysis (Utilities) for Brazil",
+   "hasContent": false,
+   "functions": {}
+  },
+  "SAP_BR_CUSTOMER_SALES_MGR": {
+   "text": "Sales Manager (Customer Management)",
+   "hasContent": false,
+   "functions": {}
+  },
+  "SAP_BR_CUSTOMER_SERVICE_DSD": {
+   "text": "Customer Service Representative - Visit Management",
+   "hasContent": false,
+   "functions": {}
+  },
+  "SAP_BR_CUSTOMER_SERVICE_MGR": {
+   "text": "Customer Service Manager (Customer Management)",
+   "hasContent": false,
+   "functions": {}
+  },
+  "SAP_BR_CUST_SRVC_MGR_REPA": {
+   "text": "Customer Service Manager - In-House Repair",
+   "hasContent": true,
+   "functions": {}
+  },
+  "SAP_BR_CUST_SRVC_REP_REPA": {
+   "text": "Customer Service Representative - In-House Repair",
+   "hasContent": true,
+   "functions": {}
+  },
+  "SAP_BR_CUST_SRVC_TEC_REPA": {
+   "text": "Service Technician - In-House Repair",
+   "hasContent": true,
+   "functions": {}
+  },
+  "SAP_BR_DATA_PRIVACY_SPECIALIST": {
+   "text": "Data Privacy Specialist",
+   "hasContent": false,
+   "functions": {}
+  },
+  "SAP_BR_DATA_PRIV_SPEC_CONS": {
+   "text": "Data Privacy Specialist - Consent Management",
+   "hasContent": true,
+   "functions": {}
+  },
+  "SAP_BR_DATA_PRIV_SPEC_FICA": {
+   "text": "Data Privacy Specialist - Accounts Payable and Receivable (FI-CA)",
+   "hasContent": false,
+   "functions": {}
+  },
+  "SAP_BR_DEFERMENT_ANALYST_IOG": {
+   "text": "Deferment Analyst (IOG)",
+   "hasContent": false,
+   "functions": {}
+  },
+  "SAP_BR_DEMAND_PLANNER_RFM": {
+   "text": "Demand Planner (Retail)",
+   "hasContent": false,
+   "functions": {}
+  },
+  "SAP_BR_DEMAND_PLANNER_SPP": {
+   "text": "Demand Planner - Service Parts",
+   "hasContent": false,
+   "functions": {}
+  },
+  "SAP_BR_DEPOSITS_EMPLOYEE": {
+   "text": "Bank Back Office Employee - Deposits Management",
+   "hasContent": false,
+   "functions": {}
+  },
+  "SAP_BR_DEPOSITS_SPECIALIST": {
+   "text": "Back Office Specialist - Deposits Management",
+   "hasContent": false,
+   "functions": {}
+  },
+  "SAP_BR_DESIGN_ENGINEER": {
+   "text": "Design Engineer",
+   "hasContent": false,
+   "functions": {}
+  },
+  "SAP_BR_DEVELOPER": {
+   "text": "Developer",
+   "hasContent": false,
+   "functions": {}
+  },
+  "SAP_BR_DEVELOPMENT_MANAGER_DIN": {
+   "text": "Development Manager - Discrete Industries",
+   "hasContent": false,
+   "functions": {}
+  },
+  "SAP_BR_DEVICE_SPEC_FE_BR": {
+   "text": "Meter Data Specialist (Utilities) for Brazil",
+   "hasContent": false,
+   "functions": {}
+  },
+  "SAP_BR_DG_SAFETY_ADVISOR": {
+   "text": "Dangerous Goods Specialist",
+   "hasContent": false,
+   "functions": {}
+  },
+  "SAP_BR_DG_SPLST_PCL": {
+   "text": "Dangerous Goods Specialist - Product Compliance",
+   "hasContent": true,
+   "functions": {}
+  },
+  "SAP_BR_DISCOPS_ADMIN": {
+   "text": "Administrator - Disconnected Operations",
+   "hasContent": false,
+   "functions": {}
+  },
+  "SAP_BR_DIVISION_ACCOUNTANT": {
+   "text": "Divisional Accountant",
+   "hasContent": false,
+   "functions": {}
+  },
+  "SAP_BR_DOWNLUPL_SPEC_FE_BR": {
+   "text": "Meter Data Specialist (Utilities) for Brazil",
+   "hasContent": false,
+   "functions": {}
+  },
+  "SAP_BR_DO_MANAGER_IOG": {
+   "text": "Division Order Manager (IOG)",
+   "hasContent": false,
+   "functions": {}
+  },
+  "SAP_BR_EMPLOYEE": {
+   "text": "Employee",
+   "hasContent": false,
+   "functions": {}
+  },
+  "SAP_BR_EMPLOYEE_EHS_INFO": {
+   "text": "Employee - EHS Info",
+   "hasContent": false,
+   "functions": {}
+  },
+  "SAP_BR_EMPLOYEE_FIRST_AID": {
+   "text": "Employee - First Aid",
+   "hasContent": true,
+   "functions": {}
+  },
+  "SAP_BR_EMPLOYEE_LEGAL_CONTENT": {
+   "text": "Employee - Enterprise Contract Management",
+   "hasContent": true,
+   "functions": {}
+  },
+  "SAP_BR_EMPLOYEE_MAINTENANCE": {
+   "text": "Employee",
+   "hasContent": true,
+   "functions": {}
+  },
+  "SAP_BR_EMPLOYEE_PROCUREMENT": {
+   "text": "Employee - Procurement",
+   "hasContent": true,
+   "functions": {
+    "SUP_INVOICE": [
+     "F2452"
+    ]
+   }
+  },
+  "SAP_BR_EMPLOYEE_TRV": {
+   "text": "Employee - Travel Info",
+   "hasContent": false,
+   "functions": {}
+  },
+  "SAP_BR_ENVIRONMENTAL_MANAGER": {
+   "text": "Environmental Manager",
+   "hasContent": false,
+   "functions": {}
+  },
+  "SAP_BR_EXTENSIBILITY_SPEC": {
+   "text": "Extensibility Specialist",
+   "hasContent": true,
+   "functions": {}
+  },
+  "SAP_BR_EXTERNAL_AUDITOR": {
+   "text": "External Auditor",
+   "hasContent": true,
+   "functions": {}
+  },
+  "SAP_BR_EXTERNAL_AUDITOR_GRP": {
+   "text": "External Auditor - Group Reporting",
+   "hasContent": true,
+   "functions": {}
+  },
+  "SAP_BR_EXT_AUDITOR_APR_FICA": {
+   "text": "External Auditor - Accounts Payable and Receivable (FI-CA)",
+   "hasContent": true,
+   "functions": {}
+  },
+  "SAP_BR_FACULTY_MEMBER": {
+   "text": "Faculty Member",
+   "hasContent": false,
+   "functions": {}
+  },
+  "SAP_BR_FC_ANALYST_PROD_IOG": {
+   "text": "Forecast Analyst - Production (IOG)",
+   "hasContent": false,
+   "functions": {}
+  },
+  "SAP_BR_FEMAINT_PLANNER": {
+   "text": "Maintenance Planner - Force Element",
+   "hasContent": false,
+   "functions": {}
+  },
+  "SAP_BR_FEMAT_PLANNER": {
+   "text": "Material Planner - Authorized Materials",
+   "hasContent": false,
+   "functions": {}
+  },
+  "SAP_BR_FIELD_OPERATOR_IOG": {
+   "text": "Field Operator (IOG)",
+   "hasContent": false,
+   "functions": {}
+  },
+  "SAP_BR_FORECAST_MANAGER_IOG": {
+   "text": "Forecast Manager (IOG)",
+   "hasContent": false,
+   "functions": {}
+  },
+  "SAP_BR_FORECAST_SPECIALIST_IOG": {
+   "text": "Forecast Specialist (IOG)",
+   "hasContent": false,
+   "functions": {}
+  },
+  "SAP_BR_FRGHT_CTRC_SPECIALIST": {
+   "text": "Contract Specialist - Freight Management",
+   "hasContent": false,
+   "functions": {}
+  },
+  "SAP_BR_FRGHT_SETTLEMENT_CLERK": {
+   "text": "Settlement Clerk - Freight Management",
+   "hasContent": true,
+   "functions": {}
+  },
+  "SAP_BR_GL_ACCOUNTANT": {
+   "text": "General Ledger Accountant",
+   "hasContent": true,
+   "functions": {
+    "GL_POST": [
+     "F0718",
+     "F2548"
+    ],
+    "PERIOD_CTRL": [
+     "F2293",
+     "F4684"
+    ],
+    "SUP_INVOICE": [
+     "F0859"
+    ]
+   }
+  },
+  "SAP_BR_GL_ACCOUNTANT_AE": {
+   "text": "General Ledger Accountant for United Arab Emirates",
+   "hasContent": false,
+   "functions": {}
+  },
+  "SAP_BR_GL_ACCOUNTANT_AR": {
+   "text": "General Ledger Accountant for Argentina",
+   "hasContent": false,
+   "functions": {}
+  },
+  "SAP_BR_GL_ACCOUNTANT_AT": {
+   "text": "General Ledger Accountant for Austria",
+   "hasContent": false,
+   "functions": {}
+  },
+  "SAP_BR_GL_ACCOUNTANT_AU": {
+   "text": "General Ledger Accountant for Australia",
+   "hasContent": false,
+   "functions": {}
+  },
+  "SAP_BR_GL_ACCOUNTANT_BANKS": {
+   "text": "General Ledger Accountant - Banks",
+   "hasContent": true,
+   "functions": {}
+  },
+  "SAP_BR_GL_ACCOUNTANT_BE": {
+   "text": "General Ledger Accountant for Belgium",
+   "hasContent": false,
+   "functions": {}
+  },
+  "SAP_BR_GL_ACCOUNTANT_BG": {
+   "text": "General Ledger Accountant for Bulgaria",
+   "hasContent": false,
+   "functions": {}
+  },
+  "SAP_BR_GL_ACCOUNTANT_BR": {
+   "text": "General Ledger Accountant for Brazil",
+   "hasContent": false,
+   "functions": {}
+  },
+  "SAP_BR_GL_ACCOUNTANT_CA": {
+   "text": "General Ledger Accountant for Canada",
+   "hasContent": false,
+   "functions": {}
+  },
+  "SAP_BR_GL_ACCOUNTANT_CFIN": {
+   "text": "General Ledger Accountant - Central Finance",
+   "hasContent": true,
+   "functions": {}
+  },
+  "SAP_BR_GL_ACCOUNTANT_CH": {
+   "text": "General Ledger Accountant for Switzerland",
+   "hasContent": false,
+   "functions": {}
+  },
+  "SAP_BR_GL_ACCOUNTANT_CL": {
+   "text": "General Ledger Accountant for Chile",
+   "hasContent": false,
+   "functions": {}
+  },
+  "SAP_BR_GL_ACCOUNTANT_CN": {
+   "text": "General Ledger Accountant for China",
+   "hasContent": false,
+   "functions": {}
+  },
+  "SAP_BR_GL_ACCOUNTANT_CO": {
+   "text": "General Ledger Accountant for Colombia",
+   "hasContent": false,
+   "functions": {}
+  },
+  "SAP_BR_GL_ACCOUNTANT_CZ": {
+   "text": "General Ledger Accountant for Czech Republic",
+   "hasContent": false,
+   "functions": {}
+  },
+  "SAP_BR_GL_ACCOUNTANT_DE": {
+   "text": "General Ledger Accountant for Germany",
+   "hasContent": false,
+   "functions": {}
+  },
+  "SAP_BR_GL_ACCOUNTANT_DK": {
+   "text": "General Ledger Accountant for Denmark",
+   "hasContent": false,
+   "functions": {}
+  },
+  "SAP_BR_GL_ACCOUNTANT_EE": {
+   "text": "General Ledger Accountant for Estonia",
+   "hasContent": false,
+   "functions": {}
+  },
+  "SAP_BR_GL_ACCOUNTANT_EG": {
+   "text": "General Ledger Accountant for Egypt",
+   "hasContent": false,
+   "functions": {}
+  },
+  "SAP_BR_GL_ACCOUNTANT_ES": {
+   "text": "General Ledger Accountant for Spain",
+   "hasContent": false,
+   "functions": {}
+  },
+  "SAP_BR_GL_ACCOUNTANT_FI": {
+   "text": "General Ledger Accountant for Finland",
+   "hasContent": false,
+   "functions": {}
+  },
+  "SAP_BR_GL_ACCOUNTANT_FMFG_US": {
+   "text": "General Ledger Accountant - Federal Accounting for USA",
+   "hasContent": true,
+   "functions": {
+    "PO_CREATE": [
+     "F0842A"
+    ]
+   }
+  },
+  "SAP_BR_GL_ACCOUNTANT_FR": {
+   "text": "General Ledger Accountant for France",
+   "hasContent": false,
+   "functions": {}
+  },
+  "SAP_BR_GL_ACCOUNTANT_GB": {
+   "text": "General Ledger Accountant for United Kingdom",
+   "hasContent": false,
+   "functions": {}
+  },
+  "SAP_BR_GL_ACCOUNTANT_GR": {
+   "text": "General Ledger Accountant for Greece",
+   "hasContent": false,
+   "functions": {}
+  },
+  "SAP_BR_GL_ACCOUNTANT_GRP": {
+   "text": "General Ledger Accountant - Group Reporting",
+   "hasContent": true,
+   "functions": {}
+  },
+  "SAP_BR_GL_ACCOUNTANT_HR": {
+   "text": "General Ledger Accountant for Croatia",
+   "hasContent": false,
+   "functions": {}
+  },
+  "SAP_BR_GL_ACCOUNTANT_HU": {
+   "text": "General Ledger Accountant for Hungary",
+   "hasContent": false,
+   "functions": {}
+  },
+  "SAP_BR_GL_ACCOUNTANT_ID": {
+   "text": "General Ledger Accountant for Indonesia",
+   "hasContent": true,
+   "functions": {}
+  },
+  "SAP_BR_GL_ACCOUNTANT_IE": {
+   "text": "General Ledger Accountant for Ireland",
+   "hasContent": false,
+   "functions": {}
+  },
+  "SAP_BR_GL_ACCOUNTANT_IL": {
+   "text": "General Ledger Accountant for Israel",
+   "hasContent": false,
+   "functions": {}
+  },
+  "SAP_BR_GL_ACCOUNTANT_IN": {
+   "text": "General Ledger Accountant for India",
+   "hasContent": false,
+   "functions": {}
+  },
+  "SAP_BR_GL_ACCOUNTANT_IT": {
+   "text": "General Ledger Accountant for Italy",
+   "hasContent": false,
+   "functions": {}
+  },
+  "SAP_BR_GL_ACCOUNTANT_JP": {
+   "text": "General Ledger Accountant for Japan",
+   "hasContent": false,
+   "functions": {}
+  },
+  "SAP_BR_GL_ACCOUNTANT_KR": {
+   "text": "General Ledger Accountant for South Korea",
+   "hasContent": false,
+   "functions": {}
+  },
+  "SAP_BR_GL_ACCOUNTANT_KW": {
+   "text": "General Ledger Accountant for Kuwait",
+   "hasContent": false,
+   "functions": {}
+  },
+  "SAP_BR_GL_ACCOUNTANT_KZ": {
+   "text": "General Ledger Accountant for Kazakhstan",
+   "hasContent": false,
+   "functions": {}
+  },
+  "SAP_BR_GL_ACCOUNTANT_LT": {
+   "text": "General Ledger Accountant for Lithuania",
+   "hasContent": false,
+   "functions": {}
+  },
+  "SAP_BR_GL_ACCOUNTANT_LU": {
+   "text": "General Ledger Accountant for Luxembourg",
+   "hasContent": false,
+   "functions": {}
+  },
+  "SAP_BR_GL_ACCOUNTANT_LV": {
+   "text": "General Ledger Accountant for Latvia",
+   "hasContent": false,
+   "functions": {}
+  },
+  "SAP_BR_GL_ACCOUNTANT_MX": {
+   "text": "General Ledger Accountant for Mexico",
+   "hasContent": false,
+   "functions": {}
+  },
+  "SAP_BR_GL_ACCOUNTANT_MY": {
+   "text": "General Ledger Accountant for Malaysia",
+   "hasContent": false,
+   "functions": {}
+  },
+  "SAP_BR_GL_ACCOUNTANT_NL": {
+   "text": "General Ledger Accountant for Netherlands",
+   "hasContent": false,
+   "functions": {}
+  },
+  "SAP_BR_GL_ACCOUNTANT_NO": {
+   "text": "General Ledger Accountant for Norway",
+   "hasContent": false,
+   "functions": {}
+  },
+  "SAP_BR_GL_ACCOUNTANT_NZ": {
+   "text": "General Ledger Accountant for New Zealand",
+   "hasContent": false,
+   "functions": {}
+  },
+  "SAP_BR_GL_ACCOUNTANT_OM": {
+   "text": "General Ledger Accountant for Oman",
+   "hasContent": false,
+   "functions": {}
+  },
+  "SAP_BR_GL_ACCOUNTANT_PE": {
+   "text": "General Ledger Accountant for Peru",
+   "hasContent": false,
+   "functions": {}
+  },
+  "SAP_BR_GL_ACCOUNTANT_PH": {
+   "text": "General Ledger Accountant for Philippines",
+   "hasContent": true,
+   "functions": {}
+  },
+  "SAP_BR_GL_ACCOUNTANT_PL": {
+   "text": "General Ledger Accountant for Poland",
+   "hasContent": false,
+   "functions": {}
+  },
+  "SAP_BR_GL_ACCOUNTANT_PT": {
+   "text": "General Ledger Accountant for Portugal",
+   "hasContent": false,
+   "functions": {}
+  },
+  "SAP_BR_GL_ACCOUNTANT_QA": {
+   "text": "General Ledger Accountant for Qatar",
+   "hasContent": false,
+   "functions": {}
+  },
+  "SAP_BR_GL_ACCOUNTANT_RO": {
+   "text": "General Ledger Accountant for Romania",
+   "hasContent": false,
+   "functions": {}
+  },
+  "SAP_BR_GL_ACCOUNTANT_RS": {
+   "text": "General Ledger Accountant for Serbia",
+   "hasContent": false,
+   "functions": {}
+  },
+  "SAP_BR_GL_ACCOUNTANT_RU": {
+   "text": "General Ledger Accountant for Russian Federation",
+   "hasContent": false,
+   "functions": {}
+  },
+  "SAP_BR_GL_ACCOUNTANT_SA": {
+   "text": "General Ledger Accountant for Saudi Arabia",
+   "hasContent": false,
+   "functions": {}
+  },
+  "SAP_BR_GL_ACCOUNTANT_SE": {
+   "text": "General Ledger Accountant for Sweden",
+   "hasContent": false,
+   "functions": {}
+  },
+  "SAP_BR_GL_ACCOUNTANT_SG": {
+   "text": "General Ledger Accountant for Singapore",
+   "hasContent": false,
+   "functions": {}
+  },
+  "SAP_BR_GL_ACCOUNTANT_SI": {
+   "text": "General Ledger Accountant for Slovenia",
+   "hasContent": false,
+   "functions": {}
+  },
+  "SAP_BR_GL_ACCOUNTANT_SK": {
+   "text": "General Ledger Accountant for Slovakia",
+   "hasContent": false,
+   "functions": {}
+  },
+  "SAP_BR_GL_ACCOUNTANT_TH": {
+   "text": "General Ledger Accountant for Thailand",
+   "hasContent": false,
+   "functions": {}
+  },
+  "SAP_BR_GL_ACCOUNTANT_TR": {
+   "text": "General Ledger Accountant for Turkey",
+   "hasContent": false,
+   "functions": {}
+  },
+  "SAP_BR_GL_ACCOUNTANT_TW": {
+   "text": "General Ledger Accountant for Taiwan",
+   "hasContent": false,
+   "functions": {}
+  },
+  "SAP_BR_GL_ACCOUNTANT_UA": {
+   "text": "General Ledger Accountant for Ukraine",
+   "hasContent": false,
+   "functions": {}
+  },
+  "SAP_BR_GL_ACCOUNTANT_US": {
+   "text": "General Ledger Accountant for USA",
+   "hasContent": false,
+   "functions": {}
+  },
+  "SAP_BR_GL_ACCOUNTANT_VE": {
+   "text": "General Ledger Accountant for Venezuela",
+   "hasContent": false,
+   "functions": {}
+  },
+  "SAP_BR_GL_ACCOUNTANT_ZA": {
+   "text": "General Ledger Accountant for South Africa",
+   "hasContent": false,
+   "functions": {}
+  },
+  "SAP_BR_GRANTOR_SPECIALIST": {
+   "text": "Grant Specialist - Grantor Programs",
+   "hasContent": false,
+   "functions": {}
+  },
+  "SAP_BR_GRANT_RESPONSIBLE": {
+   "text": "Grant Responsible",
+   "hasContent": false,
+   "functions": {}
+  },
+  "SAP_BR_GRANT_SPECIALIST": {
+   "text": "Grant Specialist",
+   "hasContent": false,
+   "functions": {}
+  },
+  "SAP_BR_GRP_ACCOUNTANT": {
+   "text": "Group Accountant",
+   "hasContent": true,
+   "functions": {}
+  },
+  "SAP_BR_HAZMAT_MANAGER": {
+   "text": "Hazardous Materials Manager",
+   "hasContent": false,
+   "functions": {}
+  },
+  "SAP_BR_HC_ANALYST_IOG": {
+   "text": "Hydrocarbon Analyst (IOG)",
+   "hasContent": false,
+   "functions": {}
+  },
+  "SAP_BR_HR_SPECIALIST": {
+   "text": "HR Specialist",
+   "hasContent": false,
+   "functions": {}
+  },
+  "SAP_BR_HU_MASTER_SPECIALIST": {
+   "text": "Master Data Specialist",
+   "hasContent": false,
+   "functions": {}
+  },
+  "SAP_BR_HYDROCARBON_ANALYST_IOG": {
+   "text": "Hydrocarbon Analyst (IOG)",
+   "hasContent": false,
+   "functions": {}
+  },
+  "SAP_BR_INDUSTRIAL_HYGIENIST": {
+   "text": "Industrial Hygienist",
+   "hasContent": true,
+   "functions": {}
+  },
+  "SAP_BR_INS_CLAIMS_HANDLER": {
+   "text": "Insurance Claims Handler",
+   "hasContent": false,
+   "functions": {}
+  },
+  "SAP_BR_INS_CLAIMS_SUPERVISOR": {
+   "text": "Insurance Claims Supervisor",
+   "hasContent": false,
+   "functions": {}
+  },
+  "SAP_BR_INS_CUSTOMER_SERVICE": {
+   "text": "Customer Service Representative - Insurance",
+   "hasContent": false,
+   "functions": {}
+  },
+  "SAP_BR_INS_INSURANCE_AGENT": {
+   "text": "Insurance Agent",
+   "hasContent": false,
+   "functions": {}
+  },
+  "SAP_BR_INS_POLICY_HANDLER": {
+   "text": "Insurance Policy Clerk",
+   "hasContent": false,
+   "functions": {}
+  },
+  "SAP_BR_INTERNAL_SALES_REP": {
+   "text": "Internal Sales Representative",
+   "hasContent": true,
+   "functions": {
+    "BILLING": [
+     "F1989",
+     "F1989A"
+    ]
+   }
+  },
+  "SAP_BR_INTERNAL_SALES_REP_DSD": {
+   "text": "Internal Sales Representative - Direct Store Delivery",
+   "hasContent": false,
+   "functions": {}
+  },
+  "SAP_BR_INTERNAL_SALES_REP_JP": {
+   "text": "Internal Sales Representative for Japan",
+   "hasContent": false,
+   "functions": {}
+  },
+  "SAP_BR_INTRASTAT_SPECIALIST": {
+   "text": "Intrastat Specialist",
+   "hasContent": false,
+   "functions": {}
+  },
+  "SAP_BR_INTRNAL_SALESREP_SOM": {
+   "text": "Internal Sales Representative (SOM)",
+   "hasContent": false,
+   "functions": {}
+  },
+  "SAP_BR_INVENTORY_ACCOUNTANT": {
+   "text": "Cost Accountant - Inventory",
+   "hasContent": false,
+   "functions": {}
+  },
+  "SAP_BR_INVENTORY_ACCOUNTANT_CN": {
+   "text": "Inventory Accountant for China",
+   "hasContent": false,
+   "functions": {}
+  },
+  "SAP_BR_INVENTORY_ACCOUNTANT_GR": {
+   "text": "Inventory Accountant for Greece",
+   "hasContent": false,
+   "functions": {}
+  },
+  "SAP_BR_INVENTORY_ACCOUNTANT_RU": {
+   "text": "Inventory Accountant for Russian Federation",
+   "hasContent": false,
+   "functions": {}
+  },
+  "SAP_BR_INVENTORY_ACCOUNTANT_TW": {
+   "text": "Inventory Accountant for Taiwan",
+   "hasContent": false,
+   "functions": {}
+  },
+  "SAP_BR_INVENTORY_ACCOUNTANT_UA": {
+   "text": "Inventory Accountant for Ukraine",
+   "hasContent": false,
+   "functions": {}
+  },
+  "SAP_BR_INVENTORY_ANALYST": {
+   "text": "Inventory Analyst",
+   "hasContent": true,
+   "functions": {}
+  },
+  "SAP_BR_INVENTORY_MANAGER": {
+   "text": "Inventory Manager",
+   "hasContent": true,
+   "functions": {
+    "GR_POST": [
+     "F0843"
+    ]
+   }
+  },
+  "SAP_BR_INVENTORY_MANAGER_IOG": {
+   "text": "Inventory Manager (IOG)",
+   "hasContent": false,
+   "functions": {}
+  },
+  "SAP_BR_INVENTORY_MANAGER_RU": {
+   "text": "Inventory Manager for Russian Federation",
+   "hasContent": false,
+   "functions": {}
+  },
+  "SAP_BR_INVENTORY_MANAGER_TH": {
+   "text": "Inventory Manager for Thailand",
+   "hasContent": false,
+   "functions": {}
+  },
+  "SAP_BR_INVENTORY_MGR_RFM": {
+   "text": "Inventory Manager (Retail)",
+   "hasContent": true,
+   "functions": {}
+  },
+  "SAP_BR_INVENT_PLANNER_SPP": {
+   "text": "Inventory Planner - Service Parts",
+   "hasContent": false,
+   "functions": {}
+  },
+  "SAP_BR_INVESTIGATOR": {
+   "text": "Criminal Investigator",
+   "hasContent": false,
+   "functions": {}
+  },
+  "SAP_BR_INVOICING_ADMIN_CINV": {
+   "text": "Administrator (Convergent Invoicing)",
+   "hasContent": true,
+   "functions": {}
+  },
+  "SAP_BR_INVOICING_SPEC_CINV": {
+   "text": "Invoicing Specialist (Convergent Invoicing)",
+   "hasContent": true,
+   "functions": {}
+  },
+  "SAP_BR_JVA_ACCOUNTANT": {
+   "text": "Joint Venture Accountant",
+   "hasContent": false,
+   "functions": {}
+  },
+  "SAP_BR_LEGAL_COUNSEL": {
+   "text": "Legal Counsel",
+   "hasContent": true,
+   "functions": {}
+  },
+  "SAP_BR_LOAN_CREDIT_ANALYST": {
+   "text": "Credit Analyst - Loans Management",
+   "hasContent": false,
+   "functions": {}
+  },
+  "SAP_BR_LOAN_DEPT_MANAGER": {
+   "text": "Manager - Loans Management",
+   "hasContent": false,
+   "functions": {}
+  },
+  "SAP_BR_LOAN_LOAN_OFFICER": {
+   "text": "Loan Officer",
+   "hasContent": false,
+   "functions": {}
+  },
+  "SAP_BR_LOAN_STAFF_ACCOUNT": {
+   "text": "Staff Accountant - Loans Management",
+   "hasContent": false,
+   "functions": {}
+  },
+  "SAP_BR_MAINTENANCE_PLANNER": {
+   "text": "Maintenance Planner",
+   "hasContent": false,
+   "functions": {}
+  },
+  "SAP_BR_MAINTENANCE_PLANNER_RSH": {
+   "text": "Maintenance Planner - Resource Scheduling",
+   "hasContent": false,
+   "functions": {}
+  },
+  "SAP_BR_MAINTENANCE_TECHNICIAN": {
+   "text": "Maintenance Technician",
+   "hasContent": true,
+   "functions": {}
+  },
+  "SAP_BR_MAINT_SUPERVISOR": {
+   "text": "Maintenance Supervisor",
+   "hasContent": false,
+   "functions": {}
+  },
+  "SAP_BR_MAINT_TECH_OFFICER": {
+   "text": "Technical Officer - Armed Forces",
+   "hasContent": false,
+   "functions": {}
+  },
+  "SAP_BR_MANAGER": {
+   "text": "Manager",
+   "hasContent": false,
+   "functions": {}
+  },
+  "SAP_BR_MANAGER_COST": {
+   "text": "Manager - Finance Info",
+   "hasContent": false,
+   "functions": {}
+  },
+  "SAP_BR_MANAGER_COST_PMM": {
+   "text": "Manager - Finance Info",
+   "hasContent": false,
+   "functions": {}
+  },
+  "SAP_BR_MANAGER_PROCUREMENT": {
+   "text": "Manager - Procurement",
+   "hasContent": true,
+   "functions": {}
+  },
+  "SAP_BR_MASTER_DATA_ACM": {
+   "text": "Master Data Specialist (ACM)",
+   "hasContent": false,
+   "functions": {}
+  },
+  "SAP_BR_MASTER_DATA_IOG": {
+   "text": "Master Data Specialist (IOG)",
+   "hasContent": false,
+   "functions": {}
+  },
+  "SAP_BR_MASTER_SPECIALIST_DSD": {
+   "text": "Master Data Specialist - Direct Store Delivery",
+   "hasContent": false,
+   "functions": {}
+  },
+  "SAP_BR_MASTER_SPECIALIST_FIN": {
+   "text": "Master Data Specialist - Financial Data (MDG)",
+   "hasContent": false,
+   "functions": {}
+  },
+  "SAP_BR_MASTER_SPEC_EXMPL": {
+   "text": "Master Data Specialist - Custom Objects (MDG)",
+   "hasContent": false,
+   "functions": {}
+  },
+  "SAP_BR_MATL_PLNR_EXT_PROC": {
+   "text": "Material Planner - External Procurement",
+   "hasContent": false,
+   "functions": {}
+  },
+  "SAP_BR_MATL_PLNR_JIT_S_TO_C": {
+   "text": "Material Planner - Just-In-Time Supply",
+   "hasContent": false,
+   "functions": {}
+  },
+  "SAP_BR_MCGN_SPEC_FE_BR": {
+   "text": "Billing Specialist - Microgeneration (Utilities) for Brazil",
+   "hasContent": false,
+   "functions": {}
+  },
+  "SAP_BR_MD_AUTHMAT": {
+   "text": "Master Data Specialist - Authorized Material Data",
+   "hasContent": false,
+   "functions": {}
+  },
+  "SAP_BR_MD_SPCLST_ITEM_RFM": {
+   "text": "Master Data Specialist - Product Data (Retail)",
+   "hasContent": false,
+   "functions": {}
+  },
+  "SAP_BR_MD_SPCLST_SITE_RFM": {
+   "text": "Master Data Specialist - Location Data (Retail)",
+   "hasContent": false,
+   "functions": {}
+  },
+  "SAP_BR_MD_SPECIALIST_EAM": {
+   "text": "Master Data Specialist - Maintenance Management",
+   "hasContent": false,
+   "functions": {}
+  },
+  "SAP_BR_MD_SPECIALIST_JIT": {
+   "text": "Master Data Specialist - Just-In-Time Supply",
+   "hasContent": false,
+   "functions": {}
+  },
+  "SAP_BR_MD_SPECIALIST_PCL": {
+   "text": "Master Data Specialist - Product Compliance",
+   "hasContent": true,
+   "functions": {}
+  },
+  "SAP_BR_MD_SPECIALIST_RAW_SUBST": {
+   "text": "Master Data Specialist - Raw Substance Data",
+   "hasContent": false,
+   "functions": {}
+  },
+  "SAP_BR_MD_SPECIALIST_WRNTY": {
+   "text": "Master Data Specialist - Warranty Management",
+   "hasContent": false,
+   "functions": {}
+  },
+  "SAP_BR_METERDATA_LOSS_BR": {
+   "text": "Meter Data Specialist - Energy Loss Prevention (Utilities) for Brazil",
+   "hasContent": false,
+   "functions": {}
+  },
+  "SAP_BR_METERDATA_LOSS_FE_BR": {
+   "text": "Meter Data Specialist - Energy Loss Prevention (Utilities) for Brazil",
+   "hasContent": false,
+   "functions": {}
+  },
+  "SAP_BR_METERDATA_SPEC_FE_BR": {
+   "text": "Meter Data Specialist (Utilities) for Brazil",
+   "hasContent": false,
+   "functions": {}
+  },
+  "SAP_BR_METERDATA_SPEC_ISU": {
+   "text": "Meter Data Specialist (Utilities)",
+   "hasContent": false,
+   "functions": {}
+  },
+  "SAP_BR_OPERATIONS_SPEC_ISU": {
+   "text": "Operations Specialist (Utilities)",
+   "hasContent": false,
+   "functions": {}
+  },
+  "SAP_BR_OPERATION_CLERK_ACM": {
+   "text": "Operations Clerk (ACM)",
+   "hasContent": false,
+   "functions": {}
+  },
+  "SAP_BR_ORDER_FULFILLMNT_MNGR": {
+   "text": "Order Fulfillment Manager",
+   "hasContent": true,
+   "functions": {}
+  },
+  "SAP_BR_ORDER_FULFILLMNT_MNGR_R": {
+   "text": "Order Fulfillment Manager (Retail)",
+   "hasContent": false,
+   "functions": {}
+  },
+  "SAP_BR_ORDER_FULFILLMNT_SPCLST": {
+   "text": "Order Fulfillment Specialist",
+   "hasContent": false,
+   "functions": {}
+  },
+  "SAP_BR_ORD_FLFMT_MNGR_SCHDG": {
+   "text": "Order Fulfillment Manager - Scheduling",
+   "hasContent": false,
+   "functions": {}
+  },
+  "SAP_BR_ORD_FULLFILMNT_SPE_R": {
+   "text": "Order Fulfillment Specialist (Retail)",
+   "hasContent": false,
+   "functions": {}
+  },
+  "SAP_BR_ORG_PLANNER": {
+   "text": "Organizational Planner - Force Element",
+   "hasContent": false,
+   "functions": {}
+  },
+  "SAP_BR_ORG_PLANNER_PERS": {
+   "text": "Organizational Planner - Personnel",
+   "hasContent": false,
+   "functions": {}
+  },
+  "SAP_BR_OVERHEAD_ACCOUNTANT": {
+   "text": "Cost Accountant - Overhead",
+   "hasContent": true,
+   "functions": {}
+  },
+  "SAP_BR_PAYMENT_SPECIALIST": {
+   "text": "Payment Specialist",
+   "hasContent": false,
+   "functions": {}
+  },
+  "SAP_BR_PAYM_SPECIALIST": {
+   "text": "Payment Specialist",
+   "hasContent": false,
+   "functions": {}
+  },
+  "SAP_BR_PAYM_SPECIALIST_IHB": {
+   "text": "Payment Specialist",
+   "hasContent": false,
+   "functions": {}
+  },
+  "SAP_BR_PLNT_MNGR_WRK_SAFETY": {
+   "text": "Plant Manager - EHS Info",
+   "hasContent": false,
+   "functions": {}
+  },
+  "SAP_BR_PORTFOLIOMANAGER": {
+   "text": "Project Portfolio Manager",
+   "hasContent": false,
+   "functions": {}
+  },
+  "SAP_BR_PRICING_SPCLST_RFM": {
+   "text": "Pricing Specialist (Retail)",
+   "hasContent": false,
+   "functions": {}
+  },
+  "SAP_BR_PRICING_SPECIALIST": {
+   "text": "Pricing Specialist",
+   "hasContent": false,
+   "functions": {}
+  },
+  "SAP_BR_PRICING_SPECIALIST_IOG": {
+   "text": "Pricing Specialist (IOG)",
+   "hasContent": false,
+   "functions": {}
+  },
+  "SAP_BR_PRJTEAMMEMBER_COMMPRJ": {
+   "text": "Project Team Member (CPM)",
+   "hasContent": false,
+   "functions": {}
+  },
+  "SAP_BR_PRJ_FIN_CTRLR_MFG": {
+   "text": "Project Financial Controller - Project Manufacturing",
+   "hasContent": false,
+   "functions": {}
+  },
+  "SAP_BR_PRJ_LOGS_CTRLR_MFG": {
+   "text": "Project Logistics Controller - Project Manufacturing",
+   "hasContent": false,
+   "functions": {}
+  },
+  "SAP_BR_PRODMASTER_SPECIALIST": {
+   "text": "Master Data Specialist - Product Data",
+   "hasContent": false,
+   "functions": {}
+  },
+  "SAP_BR_PRODMASTER_STEWARD": {
+   "text": "Master Data Steward - Product Data",
+   "hasContent": true,
+   "functions": {}
+  },
+  "SAP_BR_PRODN_ACCOUNTANT": {
+   "text": "Cost Accountant - Production",
+   "hasContent": true,
+   "functions": {}
+  },
+  "SAP_BR_PRODN_ENG_DISC": {
+   "text": "Production Engineer - Discrete Manufacturing",
+   "hasContent": false,
+   "functions": {}
+  },
+  "SAP_BR_PRODN_ENG_DISC_CAM": {
+   "text": "Production Engineer - Discrete Manufacturing (CAM)",
+   "hasContent": false,
+   "functions": {}
+  },
+  "SAP_BR_PRODN_ENG_DISC_EME": {
+   "text": "Production Engineer - Discrete Manufacturing (EME)",
+   "hasContent": false,
+   "functions": {}
+  },
+  "SAP_BR_PRODN_ENG_DISC_RFM": {
+   "text": "Production Engineer - Discrete Manufacturing (Retail)",
+   "hasContent": false,
+   "functions": {}
+  },
+  "SAP_BR_PRODN_ENG_PROC": {
+   "text": "Production Engineer - Process Manufacturing",
+   "hasContent": false,
+   "functions": {}
+  },
+  "SAP_BR_PRODN_OPTR_DISC": {
+   "text": "Production Operator - Discrete Manufacturing",
+   "hasContent": false,
+   "functions": {}
+  },
+  "SAP_BR_PRODN_OPTR_DISC_EPO": {
+   "text": "Production Operator - Discrete Manufacturing (EPO)",
+   "hasContent": false,
+   "functions": {}
+  },
+  "SAP_BR_PRODN_OPTR_EHS_INFO": {
+   "text": "Production Operator - EHS Info",
+   "hasContent": false,
+   "functions": {}
+  },
+  "SAP_BR_PRODN_OPTR_LEAN_MFG": {
+   "text": "Production Operator - Lean Manufacturing",
+   "hasContent": true,
+   "functions": {}
+  },
+  "SAP_BR_PRODN_OPTR_PROC": {
+   "text": "Production Operator - Process Manufacturing",
+   "hasContent": false,
+   "functions": {}
+  },
+  "SAP_BR_PRODN_OPTR_RPTV": {
+   "text": "Production Operator - Repetitive Manufacturing",
+   "hasContent": false,
+   "functions": {}
+  },
+  "SAP_BR_PRODN_PLNR": {
+   "text": "Production Planner",
+   "hasContent": false,
+   "functions": {}
+  },
+  "SAP_BR_PRODN_PLNR_APS": {
+   "text": "Production Planner - Advanced Planning",
+   "hasContent": false,
+   "functions": {}
+  },
+  "SAP_BR_PRODN_PLNR_LEAN_MFG": {
+   "text": "Production Planner - Lean Manufacturing",
+   "hasContent": true,
+   "functions": {}
+  },
+  "SAP_BR_PRODN_PROC_SPCLST_CAM": {
+   "text": "Production Process Specialist (CAM)",
+   "hasContent": false,
+   "functions": {}
+  },
+  "SAP_BR_PRODN_PROC_SPCLST_EPO": {
+   "text": "Production Process Specialist (EPO)",
+   "hasContent": false,
+   "functions": {}
+  },
+  "SAP_BR_PRODN_SUPERVISOR_DISC": {
+   "text": "Production Supervisor - Discrete Manufacturing",
+   "hasContent": false,
+   "functions": {}
+  },
+  "SAP_BR_PRODN_SUPERVISOR_PROC": {
+   "text": "Production Supervisor - Process Manufacturing",
+   "hasContent": false,
+   "functions": {}
+  },
+  "SAP_BR_PRODN_SUPERVISOR_RFM": {
+   "text": "Production Supervisor - Discrete Manufacturing (Retail)",
+   "hasContent": false,
+   "functions": {}
+  },
+  "SAP_BR_PRODN_SUPERVISOR_RPTV": {
+   "text": "Production Supervisor - Repetitive Manufacturing",
+   "hasContent": false,
+   "functions": {}
+  },
+  "SAP_BR_PRODN_SUPRVSR_DISC_CAM": {
+   "text": "Production Supervisor - Discrete Manufacturing (CAM)",
+   "hasContent": false,
+   "functions": {}
+  },
+  "SAP_BR_PRODN_SUPRVSR_DISC_EPO": {
+   "text": "Production Supervisor - Discrete Manufacturing (EPO)",
+   "hasContent": false,
+   "functions": {}
+  },
+  "SAP_BR_PRODN_SUPVR_LEAN_MFG": {
+   "text": "Production Supervisor - Lean Manufacturing",
+   "hasContent": true,
+   "functions": {}
+  },
+  "SAP_BR_PRODSTWRD_SPLST_PCL": {
+   "text": "Product Stewardship Specialist - Product Compliance",
+   "hasContent": false,
+   "functions": {}
+  },
+  "SAP_BR_PRODUCT_CONFIG_MODELER": {
+   "text": "Product Configuration Modeler",
+   "hasContent": false,
+   "functions": {}
+  },
+  "SAP_BR_PROD_CONF_MODELR_SOM": {
+   "text": "Product Configuration Modeler (SOM)",
+   "hasContent": false,
+   "functions": {}
+  },
+  "SAP_BR_PROD_DATA_SPEC_IOG": {
+   "text": "Production Data Specialist (IOG)",
+   "hasContent": false,
+   "functions": {}
+  },
+  "SAP_BR_PROD_STWRDSHP_SPECLST": {
+   "text": "Product Stewardship Specialist",
+   "hasContent": false,
+   "functions": {}
+  },
+  "SAP_BR_PROFESSOR": {
+   "text": "Professor",
+   "hasContent": false,
+   "functions": {}
+  },
+  "SAP_BR_PROGRAMMANAGER": {
+   "text": "Program Manager",
+   "hasContent": true,
+   "functions": {}
+  },
+  "SAP_BR_PROJECTMANAGER": {
+   "text": "Project Manager",
+   "hasContent": true,
+   "functions": {}
+  },
+  "SAP_BR_PROJECTMGR_COMMPRJ": {
+   "text": "Project Manager (CPM)",
+   "hasContent": false,
+   "functions": {}
+  },
+  "SAP_BR_PROJECTTEAMMEMBER": {
+   "text": "Project Team Member",
+   "hasContent": true,
+   "functions": {}
+  },
+  "SAP_BR_PROJECT_OFFICE_SPEC": {
+   "text": "Project Management Office Specialist",
+   "hasContent": true,
+   "functions": {}
+  },
+  "SAP_BR_PROJECT_RESOURCEMANAGER": {
+   "text": "Project Resource Manager",
+   "hasContent": false,
+   "functions": {}
+  },
+  "SAP_BR_PROJECT_STEER_MEMBER": {
+   "text": "Project Steering Committee Member",
+   "hasContent": false,
+   "functions": {}
+  },
+  "SAP_BR_PROJ_FIN_CONTROLLER": {
+   "text": "Project Financial Controller",
+   "hasContent": false,
+   "functions": {}
+  },
+  "SAP_BR_PROJ_LOG_CONTROLLER": {
+   "text": "Project Logistics Controller",
+   "hasContent": false,
+   "functions": {}
+  },
+  "SAP_BR_PROMOTION_SPCLST_RFM": {
+   "text": "Promotion Specialist (Retail)",
+   "hasContent": false,
+   "functions": {}
+  },
+  "SAP_BR_PURCHASER": {
+   "text": "Purchaser",
+   "hasContent": true,
+   "functions": {
+    "PO_CREATE": [
+     "F0842A"
+    ]
+   }
+  },
+  "SAP_BR_PURCHASER_IL": {
+   "text": "Purchaser for Israel",
+   "hasContent": false,
+   "functions": {}
+  },
+  "SAP_BR_PURCHASER_IN": {
+   "text": "Purchaser for India",
+   "hasContent": false,
+   "functions": {}
+  },
+  "SAP_BR_PURCHASER_RFM": {
+   "text": "Purchaser (Retail)",
+   "hasContent": false,
+   "functions": {}
+  },
+  "SAP_BR_PURCHASING_MANAGER": {
+   "text": "Purchasing Manager",
+   "hasContent": true,
+   "functions": {
+    "SUP_INVOICE": [
+     "F0859"
+    ]
+   }
+  },
+  "SAP_BR_PURCHASING_MANAGER_EMPT": {
+   "text": "Purchasing Manager - Empties Management",
+   "hasContent": false,
+   "functions": {}
+  },
+  "SAP_BR_QUALITY_AUDITOR": {
+   "text": "Quality Auditor",
+   "hasContent": false,
+   "functions": {}
+  },
+  "SAP_BR_QUALITY_ENGINEER": {
+   "text": "Quality Engineer",
+   "hasContent": false,
+   "functions": {}
+  },
+  "SAP_BR_QUALITY_ENGINEER_EPO": {
+   "text": "Quality Engineer (EPO)",
+   "hasContent": false,
+   "functions": {}
+  },
+  "SAP_BR_QUALITY_MANAGER": {
+   "text": "Quality Manager",
+   "hasContent": false,
+   "functions": {}
+  },
+  "SAP_BR_QUALITY_PLANNER": {
+   "text": "Quality Planner",
+   "hasContent": false,
+   "functions": {}
+  },
+  "SAP_BR_QUALITY_TECHNICIAN": {
+   "text": "Quality Technician",
+   "hasContent": false,
+   "functions": {}
+  },
+  "SAP_BR_RCVG_SPECIALIST_IOG": {
+   "text": "Receiving Specialist (IOG)",
+   "hasContent": false,
+   "functions": {}
+  },
+  "SAP_BR_RECEIVING_SPECIALIST": {
+   "text": "Receiving Specialist",
+   "hasContent": true,
+   "functions": {
+    "GR_POST": [
+     "F2502"
+    ]
+   }
+  },
+  "SAP_BR_RECIPE_DEVELOPER": {
+   "text": "Recipe Developer",
+   "hasContent": false,
+   "functions": {}
+  },
+  "SAP_BR_RECM_ADMINISTRATOR": {
+   "text": "Administrator - Leasing",
+   "hasContent": false,
+   "functions": {}
+  },
+  "SAP_BR_RECM_AP_ACCOUNTANT": {
+   "text": "Accounts Payable Accountant - Leasing",
+   "hasContent": false,
+   "functions": {}
+  },
+  "SAP_BR_RECM_AP_ACCOUNTANT_CH": {
+   "text": "Accounts Payable Accountant - Leasing for Switzerland",
+   "hasContent": false,
+   "functions": {}
+  },
+  "SAP_BR_RECM_AR_ACCOUNTANT": {
+   "text": "Accounts Receivable Accountant - Leasing",
+   "hasContent": false,
+   "functions": {}
+  },
+  "SAP_BR_RECM_AR_ACCOUNTANT_ES": {
+   "text": "Accounts Receivable Accountant - Leasing for Spain",
+   "hasContent": false,
+   "functions": {}
+  },
+  "SAP_BR_RECM_AR_ACCOUNTANT_HU": {
+   "text": "Accounts Receivable Accountant - Leasing for Hungary",
+   "hasContent": false,
+   "functions": {}
+  },
+  "SAP_BR_RECM_SPECIALIST": {
+   "text": "Contract Specialist - Leasing",
+   "hasContent": false,
+   "functions": {}
+  },
+  "SAP_BR_RECM_SPECIALIST_AT": {
+   "text": "Contract Specialist - Leasing for Austria",
+   "hasContent": false,
+   "functions": {}
+  },
+  "SAP_BR_RECM_SPECIALIST_CH": {
+   "text": "Contract Specialist - Leasing for Switzerland",
+   "hasContent": false,
+   "functions": {}
+  },
+  "SAP_BR_RECM_SPECIALIST_CZ": {
+   "text": "Contract Specialist - Leasing for Czech Republic",
+   "hasContent": false,
+   "functions": {}
+  },
+  "SAP_BR_RECM_SPECIALIST_ES": {
+   "text": "Contract Specialist - Leasing for Spain",
+   "hasContent": false,
+   "functions": {}
+  },
+  "SAP_BR_RECM_SPECIALIST_FR": {
+   "text": "Contract Specialist - Leasing for France",
+   "hasContent": false,
+   "functions": {}
+  },
+  "SAP_BR_RECM_SPECIALIST_IT": {
+   "text": "Contract Specialist - Leasing for Italy",
+   "hasContent": false,
+   "functions": {}
+  },
+  "SAP_BR_RECM_SPECIALIST_JP": {
+   "text": "Contract Specialist - Leasing for Japan",
+   "hasContent": false,
+   "functions": {}
+  },
+  "SAP_BR_RECM_SPECIALIST_NL": {
+   "text": "Contract Specialist - Leasing for Netherlands",
+   "hasContent": false,
+   "functions": {}
+  },
+  "SAP_BR_RECM_SPECIALIST_PT": {
+   "text": "Contract Specialist - Leasing for Portugal",
+   "hasContent": false,
+   "functions": {}
+  },
+  "SAP_BR_RECM_SPECIALIST_SK": {
+   "text": "Contract Specialist - Leasing for Slovakia",
+   "hasContent": false,
+   "functions": {}
+  },
+  "SAP_BR_RECM_VALSPECIALIST": {
+   "text": "Contract Valuation Specialist - Leasing",
+   "hasContent": false,
+   "functions": {}
+  },
+  "SAP_BR_RECONC_SPEC_APR_FICA": {
+   "text": "Reconciliation Specialist - Accounts Payable and Receivable (FI-CA)",
+   "hasContent": true,
+   "functions": {}
+  },
+  "SAP_BR_RECON_ACCOUNTANT": {
+   "text": "General Ledger Accountant - Intercompany",
+   "hasContent": false,
+   "functions": {}
+  },
+  "SAP_BR_RETURNS_REFUND_CLERK": {
+   "text": "Returns and Refund Clerk",
+   "hasContent": true,
+   "functions": {
+    "BILLING": [
+     "F1989",
+     "F1989A"
+    ]
+   }
+  },
+  "SAP_BR_REV_ACCOUNTANT": {
+   "text": "Revenue Accountant",
+   "hasContent": false,
+   "functions": {}
+  },
+  "SAP_BR_REV_ACCT_MANAGER_IOG": {
+   "text": "Revenue Accounting Manager (IOG)",
+   "hasContent": true,
+   "functions": {}
+  },
+  "SAP_BR_REV_ADMIN": {
+   "text": "Administrator - Revenue Accounting",
+   "hasContent": false,
+   "functions": {}
+  },
+  "SAP_BR_RE_ADMINISTRATOR": {
+   "text": "Administrator - Real Estate Management",
+   "hasContent": false,
+   "functions": {}
+  },
+  "SAP_BR_RE_COST_ACCOUNTANT": {
+   "text": "Cost Accountant - Real Estate",
+   "hasContent": false,
+   "functions": {}
+  },
+  "SAP_BR_RE_SPECIALIST_LOCAT": {
+   "text": "Real Estate Specialist - Location Management",
+   "hasContent": false,
+   "functions": {}
+  },
+  "SAP_BR_RFM_STORE_ASSOCIATE": {
+   "text": "Retail Store Associate",
+   "hasContent": false,
+   "functions": {}
+  },
+  "SAP_BR_RFM_STORE_MANAGER": {
+   "text": "Retail Store Manager",
+   "hasContent": false,
+   "functions": {}
+  },
+  "SAP_BR_RPLNMT_SPCLST_DC_RFM": {
+   "text": "Replenishment Specialist - Distribution Center (Retail)",
+   "hasContent": true,
+   "functions": {}
+  },
+  "SAP_BR_RPLNMT_SPCLST_ST_RFM": {
+   "text": "Replenishment Specialist - Store (Retail)",
+   "hasContent": true,
+   "functions": {}
+  },
+  "SAP_BR_SALES_ACCOUNTANT": {
+   "text": "Cost Accountant - Sales",
+   "hasContent": false,
+   "functions": {}
+  },
+  "SAP_BR_SALES_MANAGER": {
+   "text": "Sales Manager",
+   "hasContent": true,
+   "functions": {}
+  },
+  "SAP_BR_SALES_MANAGER_DSD": {
+   "text": "Sales Manager - Direct Store Delivery",
+   "hasContent": false,
+   "functions": {}
+  },
+  "SAP_BR_SALES_MANAGER_EMPTIES": {
+   "text": "Sales Manager - Empties Management",
+   "hasContent": false,
+   "functions": {}
+  },
+  "SAP_BR_SALES_PROCESS_MANAGER": {
+   "text": "Order-to-Cash Process Manager",
+   "hasContent": false,
+   "functions": {}
+  },
+  "SAP_BR_SCHEDULE_ANALYST_FE_BR": {
+   "text": "Meter Data Specialist - Data Analysis (Utilities) for Brazil",
+   "hasContent": false,
+   "functions": {}
+  },
+  "SAP_BR_SC_ANALYST_IOG": {
+   "text": "Supply Chain Analyst (IOG)",
+   "hasContent": false,
+   "functions": {}
+  },
+  "SAP_BR_SERVICE_PLANNER": {
+   "text": "Service Planner - Recurring Service",
+   "hasContent": false,
+   "functions": {}
+  },
+  "SAP_BR_SERVICE_PROVIDER_REP": {
+   "text": "Logistics Service Provider Representative",
+   "hasContent": true,
+   "functions": {}
+  },
+  "SAP_BR_SERV_REP_T": {
+   "text": "Customer Service Representative (Customer Management)",
+   "hasContent": false,
+   "functions": {}
+  },
+  "SAP_BR_SETL_CLERK_COMMSN": {
+   "text": "Settlement Clerk - Commissions",
+   "hasContent": true,
+   "functions": {}
+  },
+  "SAP_BR_SETL_CLERK_LMD": {
+   "text": "Settlement Clerk - Direct Distribution",
+   "hasContent": false,
+   "functions": {}
+  },
+  "SAP_BR_SETL_CLERK_ROYALTIES": {
+   "text": "Settlement Clerk - Royalties",
+   "hasContent": true,
+   "functions": {}
+  },
+  "SAP_BR_SETTLEMENT_CLERK_ACM": {
+   "text": "Settlement Clerk (ACM)",
+   "hasContent": false,
+   "functions": {}
+  },
+  "SAP_BR_SET_CLERK": {
+   "text": "Settlement Clerk",
+   "hasContent": true,
+   "functions": {}
+  },
+  "SAP_BR_SHIPPING_SPECIALIST": {
+   "text": "Shipping Specialist",
+   "hasContent": true,
+   "functions": {}
+  },
+  "SAP_BR_SHIPPING_SPECIALIST_IOG": {
+   "text": "Shipping Specialist (IOG)",
+   "hasContent": false,
+   "functions": {}
+  },
+  "SAP_BR_SHIPPING_SPECIALIST_JP": {
+   "text": "Shipping Specialist for Japan",
+   "hasContent": false,
+   "functions": {}
+  },
+  "SAP_BR_SHIP_SPECIALIST_JIT": {
+   "text": "Shipping Specialist - Just-In-Time Supply",
+   "hasContent": false,
+   "functions": {}
+  },
+  "SAP_BR_SOURCING_MANAGER": {
+   "text": "Sourcing Manager",
+   "hasContent": true,
+   "functions": {
+    "PO_CREATE": [
+     "F4104",
+     "U0016"
+    ]
+   }
+  },
+  "SAP_BR_SPED_EFD_ROLE": {
+   "text": "SPED EFD Role",
+   "hasContent": false,
+   "functions": {}
+  },
+  "SAP_BR_STORE_DESIGN_MGN_RFM": {
+   "text": "Store Design Manager",
+   "hasContent": false,
+   "functions": {}
+  },
+  "SAP_BR_STUDENT": {
+   "text": "Student",
+   "hasContent": false,
+   "functions": {}
+  },
+  "SAP_BR_SUPPLYCHAIN_MANAGER_IOG": {
+   "text": "Supply Chain Manager (IOG)",
+   "hasContent": false,
+   "functions": {}
+  },
+  "SAP_BR_SUPPLY_PLANNER_SPP": {
+   "text": "Supply Planner - Service Parts",
+   "hasContent": false,
+   "functions": {}
+  },
+  "SAP_BR_SYSTEMS_ENGINEER": {
+   "text": "Systems Engineer",
+   "hasContent": false,
+   "functions": {}
+  },
+  "SAP_BR_TAX_ACCOUNTANT_CIT": {
+   "text": "Tax Accountant - Corporate Income Tax",
+   "hasContent": true,
+   "functions": {}
+  },
+  "SAP_BR_TAX_ACCOUNTANT_REP": {
+   "text": "Tax Accountant - Legal Reporting",
+   "hasContent": false,
+   "functions": {}
+  },
+  "SAP_BR_TAX_SPECIALIST_BR": {
+   "text": "Tax Specialist for Brazil",
+   "hasContent": false,
+   "functions": {}
+  },
+  "SAP_BR_TERMINAL_OPERATOR_IOG": {
+   "text": "Terminal Operator (IOG)",
+   "hasContent": false,
+   "functions": {}
+  },
+  "SAP_BR_TRADER": {
+   "text": "Trader",
+   "hasContent": false,
+   "functions": {}
+  },
+  "SAP_BR_TRADER_ACM": {
+   "text": "Trader (ACM)",
+   "hasContent": false,
+   "functions": {}
+  },
+  "SAP_BR_TRADER_PHYS_CMMDTY": {
+   "text": "Trader - Physical Commodities",
+   "hasContent": false,
+   "functions": {}
+  },
+  "SAP_BR_TRADING_MANAGER": {
+   "text": "Trading Manager",
+   "hasContent": false,
+   "functions": {}
+  },
+  "SAP_BR_TRANSPORTATION_MANAGER": {
+   "text": "Transportation Manager",
+   "hasContent": false,
+   "functions": {}
+  },
+  "SAP_BR_TRANSPORTATION_PLANNER": {
+   "text": "Transportation Planner",
+   "hasContent": false,
+   "functions": {}
+  },
+  "SAP_BR_TRANSPRT_MNGR_LMD": {
+   "text": "Transportation Manager - Direct Distribution",
+   "hasContent": false,
+   "functions": {}
+  },
+  "SAP_BR_TRANSP_PLANNER_IOG": {
+   "text": "Transportation Planner (IOG)",
+   "hasContent": false,
+   "functions": {}
+  },
+  "SAP_BR_TRANSP_SCHDLR_IOG": {
+   "text": "Transportation Scheduler (IOG)",
+   "hasContent": false,
+   "functions": {}
+  },
+  "SAP_BR_TRD_CLS_SPECIALIST": {
+   "text": "Trade Classification Specialist",
+   "hasContent": false,
+   "functions": {}
+  },
+  "SAP_BR_TRD_CMPLNC_MANAGER_RU": {
+   "text": "Trade Compliance Specialist for Russian Federation",
+   "hasContent": false,
+   "functions": {}
+  },
+  "SAP_BR_TRD_CMPLNC_SPECIALIST": {
+   "text": "Trade Compliance Specialist",
+   "hasContent": false,
+   "functions": {}
+  },
+  "SAP_BR_TREASURY_ACCOUNTANT": {
+   "text": "Treasury Accountant",
+   "hasContent": false,
+   "functions": {}
+  },
+  "SAP_BR_TREASURY_ACCOUNTANT_BR": {
+   "text": "Treasury Accountant for Brazil",
+   "hasContent": false,
+   "functions": {}
+  },
+  "SAP_BR_TREASURY_ACCOUNTANT_HU": {
+   "text": "Treasury Accountant for Hungary",
+   "hasContent": false,
+   "functions": {}
+  },
+  "SAP_BR_TREASURY_RISK_MANAGER": {
+   "text": "Treasury Risk Manager",
+   "hasContent": false,
+   "functions": {}
+  },
+  "SAP_BR_TREASURY_SPECIALIST_BOE": {
+   "text": "Treasury Specialist - Back Office",
+   "hasContent": false,
+   "functions": {}
+  },
+  "SAP_BR_TREASURY_SPECIALIST_FOE": {
+   "text": "Treasury Specialist - Front Office",
+   "hasContent": false,
+   "functions": {}
+  },
+  "SAP_BR_TREASURY_SPECIALIST_MOE": {
+   "text": "Treasury Specialist - Middle Office",
+   "hasContent": false,
+   "functions": {}
+  },
+  "SAP_BR_TRM_IL": {
+   "text": "Treasury Risk Manager for Israel",
+   "hasContent": false,
+   "functions": {}
+  },
+  "SAP_BR_TRV_ASSISTANT": {
+   "text": "Travel Agent",
+   "hasContent": false,
+   "functions": {}
+  },
+  "SAP_BR_TR_SPECIALIST_BOE_FR": {
+   "text": "Treasury Specialist - Back Office for France",
+   "hasContent": false,
+   "functions": {}
+  },
+  "SAP_BR_TR_SPECIALIST_BOE_HU": {
+   "text": "Treasury Specialist - Back Office for Hungary",
+   "hasContent": false,
+   "functions": {}
+  },
+  "SAP_BR_TR_SPECIALIST_BOE_US": {
+   "text": "Treasury Specialist - Back Office for USA",
+   "hasContent": false,
+   "functions": {}
+  },
+  "SAP_BR_WAREHOUSE_CLERK": {
+   "text": "Warehouse Clerk",
+   "hasContent": true,
+   "functions": {
+    "GR_POST": [
+     "F0843",
+     "F2502",
+     "F3244",
+     "F4974"
+    ]
+   }
+  },
+  "SAP_BR_WAREHOUSE_CLERK_DSD": {
+   "text": "Warehouse Clerk - Direct Store Delivery",
+   "hasContent": false,
+   "functions": {}
+  },
+  "SAP_BR_WAREHOUSE_CLERK_EWM": {
+   "text": "Warehouse Clerk (EWM)",
+   "hasContent": false,
+   "functions": {}
+  },
+  "SAP_BR_WAREHOUSE_CLERK_EXP": {
+   "text": "Warehouse Clerk",
+   "hasContent": false,
+   "functions": {}
+  },
+  "SAP_BR_WAREHOUSE_CLERK_IOG": {
+   "text": "Warehouse Clerk (IOG)",
+   "hasContent": false,
+   "functions": {}
+  },
+  "SAP_BR_WAREHOUSE_CLERK_KZ": {
+   "text": "Warehouse Clerk for Kazakhstan",
+   "hasContent": false,
+   "functions": {}
+  },
+  "SAP_BR_WAREHOUSE_CLERK_RFM": {
+   "text": "Warehouse Clerk (Retail)",
+   "hasContent": true,
+   "functions": {
+    "GR_POST": [
+     "F3244"
+    ]
+   }
+  },
+  "SAP_BR_WAREHOUSE_CLERK_RU": {
+   "text": "Warehouse Clerk for Russian Federation",
+   "hasContent": false,
+   "functions": {}
+  },
+  "SAP_BR_WAREHOUSE_CLERK_UA": {
+   "text": "Warehouse Clerk for Ukraine",
+   "hasContent": false,
+   "functions": {}
+  },
+  "SAP_BR_WAREHOUSE_OPERATIVE_EWM": {
+   "text": "Warehouse Operative (EWM)",
+   "hasContent": false,
+   "functions": {}
+  }
+ },
+ "rolesWithInternalConflict": [
+  {
+   "role": "SAP_BR_AR_ACCOUNTANT",
+   "risk": "R05"
+  },
+  {
+   "role": "SAP_BR_GL_ACCOUNTANT",
+   "risk": "R09"
+  }
+ ]
+}

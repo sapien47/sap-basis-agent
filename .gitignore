@@ -1,0 +1,12 @@
+# secrets and system details stay local
+.env
+# WSDL files contain the system's address
+wsdl/
+node_modules/
+# audit log of real runs
+logs/
+# Python cache
+__pycache__/
+*.pyc
+# internal project brief
+CLAUDE.md

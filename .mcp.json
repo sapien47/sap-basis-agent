@@ -1,0 +1,9 @@
+{
+  "mcpServers": {
+    "sap-basis-agent": {
+      "type": "stdio",
+      "command": "node",
+      "args": ["src/server.js"]
+    }
+  }
+}
